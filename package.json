@@ -8,6 +8,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "deploy": "astro build && wrangler pages deploy dist --project-name=mdolnicek",
     "lint": "eslint \"src/**/*.{ts,tsx,astro}\" \"tests/**/*.ts\" --max-warnings=0",
     "format": "prettier --write .",
     "test": "vitest run && playwright test",
