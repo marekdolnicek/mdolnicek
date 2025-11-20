@@ -6,6 +6,6 @@
     "command": "pnpm build"
   },
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist/_astro/"
   }
 }
