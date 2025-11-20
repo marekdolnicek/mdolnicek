@@ -6,6 +6,7 @@
     "command": "pnpm build"
   },
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "binding": "ASSETS"
   }
 }
