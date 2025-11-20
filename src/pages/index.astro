@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+import ProjectTimeline from '../components/react/ProjectTimeline.tsx';
+import AIPlayground from '../components/react/AIPlayground.tsx';
+import OpportunityForm from '../components/react/OpportunityForm.tsx';
+import {
+  hero,
+  highlightStats,
+  skillClusters,
+  timelineEntries,
+  aiIdeas,
+  contactLinks
+} from '../data/profile';
+import { Image } from 'astro:assets';
+import portrait from '../assets/profilovka_md.png';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout>
+  <section class="rounded-[32px] border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-8 shadow-card">
+    <div class="grid gap-8 lg:grid-cols-[2fr,0.5fr] lg:items-center">
+      <div class="space-y-5">
+        <p class="eyebrow">{hero.eyebrow}</p>
+        <h1 class="text-4xl font-semibold text-white sm:text-5xl">{hero.title}</h1>
+        <p class="text-xl text-slate-200">{hero.subtitle}</p>
+        <p class="max-w-3xl text-lg text-slate-300">{hero.body}</p>
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+          <a class="rounded-full bg-accent px-6 py-3 text-base font-semibold text-ink shadow-card transition hover:bg-accentMuted" href={hero.primaryCta.href}>
+            {hero.primaryCta.label}
+          </a>
+          <a class="rounded-full border border-white/30 px-6 py-3 text-base font-semibold text-white transition hover:border-accent" href={hero.secondaryCta.href}>
+            {hero.secondaryCta.label}
+          </a>
+        </div>
+      </div>
+      <figure class="relative overflow-hidden rounded-[32px] border border-white/15 bg-white/5 p-3 shadow-card">
+        <div class="absolute inset-3 rounded-[28px] bg-gradient-to-b from-accent/30 to-transparent blur-3xl" aria-hidden="true"></div>
+        <Image
+          src={portrait}
+          alt="Portrait of Marek Dolníček"
+          class="relative z-10 h-full w-full rounded-[24px] object-cover"
+          width={360}
+          height={450}
+          loading="lazy"
+        />
+        <figcaption class="mt-4 text-sm text-slate-400">
+          Marek Dolníček — React developer with an AI curiosity streak.
+        </figcaption>
+      </figure>
+    </div>
+    <div class="mt-8 grid gap-4 sm:grid-cols-3">
+      {highlightStats.map((stat) => (
+        <div class="surface-card" key={stat.label}>
+          <p class="text-3xl font-semibold text-accent">{stat.value}</p>
+          <p class="text-sm uppercase tracking-[0.25em] text-slate-400">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="grid gap-6 lg:grid-cols-[2fr_1fr]">
+    <div class="surface-card space-y-6">
+      <div>
+        <p class="eyebrow">React + Astro DNA</p>
+        <h2 class="text-3xl font-semibold text-white">Systems that feel instant</h2>
+      </div>
+      <p class="text-lg text-slate-200">
+        React islands stay small, typed, and intentional. Astro owns routing, MDX content, and edge-friendly builds so we ship less JavaScript and keep performance budgets honest.
+      </p>
+      <ul class="grid gap-4 sm:grid-cols-3">
+        {skillClusters.map((cluster) => (
+          <li key={cluster.name} class="rounded-3xl border border-white/10 bg-white/5 p-4">
+            <p class="text-sm font-semibold text-white">{cluster.name}</p>
+            <ul class="mt-2 space-y-1 text-sm text-slate-300">
+              {cluster.bullets.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <AIPlayground client:visible ideas={aiIdeas} />
+  </section>
+
+  <section id="projects" class="space-y-6">
+    <div class="flex flex-col gap-2">
+      <p class="eyebrow">Selected projects</p>
+      <h2 class="text-3xl font-semibold text-white">React-heavy surfaces with Astro discipline</h2>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2">
+      {projects.map((project) => (
+        <article class="grid-panel flex flex-col gap-4" key={project.slug}>
+          <div>
+            <p class="text-sm uppercase tracking-[0.25em] text-slate-400">{project.data.role}</p>
+            <h3 class="mt-2 text-2xl font-semibold text-white">{project.data.title}</h3>
+            <p class="mt-2 text-slate-200">{project.data.summary}</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            {project.data.stack.map((tech) => (
+              <span class="pill" key={tech}>{tech}</span>
+            ))}
+          </div>
+          {project.data.link && (
+            <a class="text-sm font-semibold text-accent underline-offset-4 hover:underline" href={project.data.link}>
+              Visit project →
+            </a>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <div>
+      <p class="eyebrow">Timeline</p>
+      <h2 class="text-3xl font-semibold text-white">Where React met AI curiosity</h2>
+    </div>
+    <ProjectTimeline client:visible entries={timelineEntries} />
+  </section>
+
+  <section class="grid gap-6 lg:grid-cols-2">
+    <OpportunityForm client:visible />
+    <div class="surface-card space-y-4">
+      <p class="eyebrow text-accent">Signals</p>
+      <h2 class="text-3xl font-semibold text-white">Let’s pair on your React surface</h2>
+      <p class="text-slate-200">
+        Async briefs, live pairing, or embedded consulting. I plug in quickly, leave documentation behind, and keep performance budgets measurable.
+      </p>
+      <ul class="space-y-2 text-sm text-slate-200">
+        {contactLinks.map((link) => (
+          <li key={link.label} class="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+            <span>{link.label}</span>
+            <a class="font-semibold text-accent" href={link.href}>{link.value}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

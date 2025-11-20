@@ -1,0 +1,23 @@
+{
+  "workspace": "personal-astro-site",
+  "subagents": [
+    {
+      "name": "astro-webdev",
+      "description": "Astro-focused frontend engineer optimizing for speed and semantics.",
+      "tools": ["context7-mcp"],
+      "entry": "src/pages/index.astro"
+    },
+    {
+      "name": "playwright-tester",
+      "description": "QA engineer executing Playwright smoke tests and reporting regressions.",
+      "tools": ["@playwright/test"],
+      "entry": "tests/home.spec.ts"
+    },
+    {
+      "name": "web-developer",
+      "description": "Full-stack web development agent specializing in Astro, TypeScript, accessibility, performance, and security best practices.",
+      "tools": [],
+      "entry": "src/pages/index.astro"
+    }
+  ]
+}

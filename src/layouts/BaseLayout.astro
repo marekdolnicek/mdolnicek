@@ -1,0 +1,30 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  coverImage?: string;
+}
+
+const { title = 'Marek Dolníček — React & Astro Developer', description = 'React-focused web developer crafting fast Astro experiences with fullstack ambition and AI curiosity.', coverImage = '/social.png' } = Astro.props as Props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={coverImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen px-6 pb-16 pt-10 text-base text-slate-100 sm:px-10 lg:px-16">
+    <main class="mx-auto flex max-w-6xl flex-col gap-12">
+      <slot />
+    </main>
+  </body>
+</html>

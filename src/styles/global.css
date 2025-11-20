@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: theme('colors.ink');
+    background-color: #020617;
+    min-height: 100%;
+  }
+
+  body {
+    @apply bg-slate-900 text-slate-100 antialiased;
+    background-image: radial-gradient(circle at 20% 20%, rgba(94, 245, 198, 0.2), transparent 55%),
+      radial-gradient(circle at 80% 0%, rgba(45, 212, 191, 0.18), transparent 50%),
+      linear-gradient(120deg, #020617 0%, #0b1120 65%, #020617 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .surface-card {
+    @apply rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow-card;
+  }
+
+  .eyebrow {
+    @apply text-xs uppercase tracking-[0.35em] text-slate-400;
+  }
+
+  .pill {
+    @apply rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-slate-200;
+  }
+
+  .grid-panel {
+    @apply surface-card transition hover:-translate-y-1 hover:border-accent/60 hover:bg-white/10;
+  }
+
+  .tag {
+    @apply rounded-md bg-ink/40 px-2 py-0.5 text-xs font-semibold text-accent;
+  }
+}
