@@ -3,17 +3,11 @@ import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
-  site: 'https://marekdolnicek.dev',
+  site: 'https://mdolnicek.eu',
   srcDir: './src',
   output: 'static',
-  adapter: cloudflare({
-    platformProxy: {
-      enabled: true,
-    },
-  }),
   integrations: [
     react(),
     tailwind({ applyBaseStyles: false }),
