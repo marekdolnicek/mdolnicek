@@ -47,7 +47,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
           loading="lazy"
         />
         <figcaption class="mt-4 text-sm text-slate-400">
-          Marek Dolníček — React developer with an AI curiosity streak.
+          Marek Dolníček — Czech frontend developer focused on enterprise portals.
         </figcaption>
       </figure>
     </div>
@@ -64,11 +64,11 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   <section class="grid gap-6 lg:grid-cols-[2fr_1fr]">
     <div class="surface-card space-y-6">
       <div>
-        <p class="eyebrow">React + Astro DNA</p>
-        <h2 class="text-3xl font-semibold text-white">Systems that feel instant</h2>
+        <p class="eyebrow">Enterprise React delivery</p>
+        <h2 class="text-3xl font-semibold text-white">Systems used daily by Czech teams</h2>
       </div>
       <p class="text-lg text-slate-200">
-        React islands stay small, typed, and intentional. Astro owns routing, MDX content, and edge-friendly builds so we ship less JavaScript and keep performance budgets honest.
+        I ship maintainable React and TypeScript apps for banks, rail operators, and retailers. Data flows from Java, PHP, or GraphQL APIs into accessible Material UI and CSS systems that keep store teams productive, while ongoing experiments with AI agents and light DevOps routines keep delivery improving every sprint.
       </p>
       <ul class="grid gap-4 sm:grid-cols-3">
         {skillClusters.map((cluster) => (
@@ -114,10 +114,10 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     </div>
   </section>
 
-  <section class="space-y-4">
+  <section id="timeline" class="space-y-4">
     <div>
       <p class="eyebrow">Timeline</p>
-      <h2 class="text-3xl font-semibold text-white">Where React met AI curiosity</h2>
+      <h2 class="text-3xl font-semibold text-white">Career milestones & key clients</h2>
     </div>
     <ProjectTimeline client:visible entries={timelineEntries} />
   </section>

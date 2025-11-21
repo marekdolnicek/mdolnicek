@@ -1,87 +1,113 @@
 export const hero = {
-  eyebrow: 'React • Astro • AI-curious',
+  eyebrow: 'Frontend developer • React & TypeScript',
   title: 'Marek Dolníček',
-  subtitle: 'React-focused web developer turning design systems into measurable outcomes.',
+  subtitle: 'Enterprise-ready React developer based in Prague.',
   body:
-    'I build resilient Astro frontends, ship React where the UI benefits from live data, and keep performance budgets in green. Lately I combine realtime APIs with AI copilots to let products feel predictive — not reactive.',
+    'Over the past decade I have delivered internal portals for TESCO Stores CZ, MONETA Auto, České dráhy, JABLOTRON GROUP and other Czech brands. I own the front-end in React and TypeScript, tie it back to Java or PHP APIs, and keep Material UI and custom design systems lean and performant while constantly learning—from orchestrating AI agents to experimenting with DevOps practices.',
   primaryCta: {
-    label: 'Book a pairing session',
-    href: 'mailto:hello@marekdolnicek.dev?subject=Let’s build with React'
+    label: 'Email marekdolnicek@gmail.com',
+    href: 'mailto:marekdolnicek@gmail.com'
   },
   secondaryCta: {
-    label: 'Browse selected work',
-    href: '#projects'
+    label: 'View experience timeline',
+    href: '#timeline'
   }
 };
 
 export const highlightStats = [
-  { label: 'React-focused years', value: '8+' },
-  { label: 'Perf budgets enforced', value: '23' },
-  { label: 'AI prototypes shipped', value: '5' }
+  { label: 'Years in frontend', value: '8+' },
+  { label: 'Enterprise portals delivered', value: '7' },
+  { label: 'Freelance since', value: '2012' }
 ];
 
 export const skillClusters = [
   {
-    name: 'Frontend systems',
-    bullets: ['Astro islands & SSR', 'React 18 concurrent rendering', 'Typed design tokens']
+    name: 'React delivery',
+    bullets: ['React, Next.js & Gatsby', 'Redux, Formik & React Hook Form', 'Material UI & custom design systems']
   },
   {
-    name: 'Fullstack ambition',
-    bullets: ['Node & Edge functions', 'Postgres + Prisma', 'tRPC & OpenAPI']
+    name: 'Backend & data layer',
+    bullets: ['Java & PHP APIs', 'REST + GraphQL integrations', 'PostgreSQL & MySQL administration']
   },
   {
-    name: 'AI interest',
-    bullets: ['LLM-enabled UI states', 'RAG tooling', 'Observability for prompts']
+    name: 'Tooling, AI & DevOps',
+    bullets: [
+      'Webpack, Gulp, Vite build systems',
+      'Prompting + managing AI copilots',
+      'CI/CD habits, monitoring, performance budgets'
+    ]
   }
 ];
 
 export const timelineEntries = [
   {
-    id: 'current',
-    year: '2024 → now',
-    title: 'React consultant @ Freelance',
-    summary: 'Partner with European startups to harden design systems, migrate to Astro, and offload workflows to AI copilots.',
-    stack: ['Astro', 'React 18', 'Claude', 'Next.js']
-  },
-  {
-    id: 'saas',
+    id: 'consware',
     year: '2022 – 2024',
-    title: 'Lead Frontend @ FlowOps',
-    summary: 'Shipped a React analytics suite with streaming dashboards, sub-100ms interactions, and multi-tenant access controls.',
-    stack: ['React Query', 'WebSockets', 'Vitest', 'Playwright']
+    title: 'Frontend Developer @ CONSWARE',
+    summary:
+      'Owned the front-end for an internal operations platform used by TESCO Stores CZ teams, delivering React/TypeScript modules, Material UI components, and integrations with Java REST APIs and PostgreSQL.',
+    stack: ['React', 'TypeScript', 'Redux', 'Formik', 'Java REST', 'PostgreSQL']
   },
   {
-    id: 'studio',
-    year: '2019 – 2022',
-    title: 'Creative technologist @ Studio North',
-    summary: 'Built experiential marketing sites with Astro predecessors, progressive enhancement, and high-contrast theming.',
-    stack: ['Eleventy', 'GSAP', 'Node APIs']
+    id: 'bootiq',
+    year: '2021 – 2022',
+    title: 'Frontend Developer @ BOOTIQ',
+    summary:
+      'Delivered internal portals for MONETA Auto and České dráhy plus the OREA HOTELS web presence, combining Next.js, React Hook Form, and reusable CSS systems.',
+    stack: ['Next.js', 'React Hook Form', 'Redux', 'Styled Components', 'Tailwind CSS']
+  },
+  {
+    id: 'synetech',
+    year: '2020 – 2021',
+    title: 'Frontend Developer @ SYNETECH',
+    summary:
+      'Created React + Gatsby applications for JABLOTRON GROUP alongside bespoke sites, wiring GraphQL data sources and extending Material UI themes.',
+    stack: ['Gatsby', 'GraphQL', 'TypeScript', 'Material UI', 'Jest']
+  },
+  {
+    id: 'coolcredit',
+    year: '2018 – 2020',
+    title: 'Frontend Developer @ COOL CREDIT',
+    summary:
+      'Maintained lending web systems, migrating Vanilla JS and Symfony interfaces to modular React components with SASS/BEM design language.',
+    stack: ['Vanilla JS', 'React', 'Symfony', 'SASS', 'Webpack']
+  },
+  {
+    id: 'osvc',
+    year: '2012 – present',
+    title: 'Freelance web specialist',
+    summary:
+      'Operate a long-running web services practice delivering marketing sites, SEO support, e-commerce builds, and small game experiments.',
+    stack: ['WordPress', 'SEO', 'E-commerce', 'HTML/CSS']
   }
 ];
 
 export const aiIdeas = [
   {
-    id: 'briefs',
-    title: 'Brief decomposer',
-    description: 'Drop a client brief, receive a scoped React backlog + performance checklist.',
-    impact: 'Saves ~6 hours of estimation work per engagement.'
+    id: 'tesco',
+    title: 'TESCO Stores CZ operations portal',
+    description:
+      'Internal React/TypeScript platform supporting store teams with Material UI dashboards backed by Java REST APIs and PostgreSQL data.',
+    impact: 'Standardized workflows for Czech hypermarkets and reduced manual reporting.'
   },
   {
-    id: 'a11y',
-    title: 'A11y copilots',
-    description: 'AST-based agent that patches React components until axe-core is green.',
-    impact: 'Turns accessibility from QA chore into automated guardrail.'
+    id: 'moneta',
+    title: 'MONETA Auto onboarding suite',
+    description:
+      'Next.js + React Hook Form tooling that handles loan advisor workflows, validations, and REST integrations for the automotive finance team.',
+    impact: 'Cut onboarding time for new finance products and improved data consistency.'
   },
   {
-    id: 'insights',
-    title: 'Telemetry storyteller',
-    description: 'Transforms lighthouse metrics + user sessions into a narrative for stakeholders.',
-    impact: 'Keeps performance budgets visible without dashboards.'
+    id: 'jablotron',
+    title: 'JABLOTRON service dashboard',
+    description:
+      'Gatsby application that aggregates device and installer data via GraphQL plus automated accessibility and Jest checks.',
+    impact: 'Gave hardware partners a single place to inspect deployments and share updates.'
   }
 ];
 
 export const contactLinks = [
-  { label: 'Email', value: 'hello@marekdolnicek.dev', href: 'mailto:hello@marekdolnicek.dev' },
-  { label: 'GitHub', value: '@mdolnicek', href: 'https://github.com/mdolnicek' },
+  { label: 'Email', value: 'marekdolnicek@gmail.com', href: 'mailto:marekdolnicek@gmail.com' },
+  { label: 'Phone', value: '+420 603 225 154', href: 'tel:+420603225154' },
   { label: 'LinkedIn', value: 'in/marekdolnicek', href: 'https://www.linkedin.com/in/marekdolnicek' }
 ];
