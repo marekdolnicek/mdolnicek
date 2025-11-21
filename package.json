@@ -7,8 +7,8 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "deploy": "astro build && wrangler deploy",
+    "preview": "wrangler pages dev dist",
+    "deploy": "astro build && wrangler pages deploy dist",
     "lint": "eslint \"src/**/*.{ts,tsx,astro}\" \"tests/**/*.ts\" --max-warnings=0",
     "format": "prettier --write .",
     "test": "vitest run && playwright test",
@@ -26,6 +26,7 @@
     "sharp": "^0.34.5"
   },
   "devDependencies": {
+    "@astrojs/cloudflare": "^12.6.11",
     "@eslint/js": "^9.15.0",
     "@playwright/test": "^1.49.0",
     "@testing-library/jest-dom": "^6.6.3",
