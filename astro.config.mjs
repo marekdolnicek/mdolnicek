@@ -4,6 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
+// https://astro.build/config
 export default defineConfig({
   site: 'https://mdolnicek.eu',
   srcDir: './src',
