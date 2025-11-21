@@ -8,6 +8,9 @@ export default defineConfig({
   site: 'https://mdolnicek.eu',
   srcDir: './src',
   output: 'static',
+  build: {
+    assets: 'assets'
+  },
   integrations: [
     react(),
     tailwind({ applyBaseStyles: false }),
