@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Docker GitHub Actions CI/CD for React | Frontend DevOps Guide"
+  description="Docker and GitHub Actions CI/CD pipeline for React applications from O2 Czech Republic deployment."
+>
+  <div class="mx-auto flex max-w-6xl flex-col gap-12">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href="/" class="transition hover:text-accent">Home</a>
+      <span class="mx-2">→</span>
+      <a href="/vocabulary" class="transition hover:text-accent">Vocabulary</a>
+      <span class="mx-2">→</span>
+      <span class="text-slate-200">Docker + GitHub Actions CI/CD</span>
+    </nav>
+
+    <section class="space-y-4">
+      <p class="eyebrow">DevOps & Deployment</p>
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">Docker + GitHub Actions CI/CD</h1>
+      <p class="text-xl text-slate-300">Automated deployment pipelines for React applications</p>
+    </section>
+
+    <section class="rounded-[32px] border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 shadow-card">
+      <p class="text-lg text-slate-100">
+        <strong class="text-white">Definition:</strong> Automated deployment pipelines using Docker containerization and GitHub Actions for continuous integration and delivery of React applications.
+      </p>
+    </section>
+
+    <section class="surface-card space-y-6">
+      <div>
+        <h2 class="text-2xl font-semibold text-white">CI/CD Pipeline Components</h2>
+      </div>
+      <ul class="space-y-3 text-slate-200">
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Docker multi-stage builds:</strong> Optimized container images with minimal size</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">GitHub Actions workflows:</strong> Automated testing and deployment on every push</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Quality gates:</strong> ESLint, Prettier, unit tests, E2E tests must pass</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Performance budgets:</strong> Bundle size checks prevent regressions</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="surface-card space-y-6">
+      <div>
+        <p class="eyebrow text-accent">Case Study</p>
+        <h2 class="mt-2 text-2xl font-semibold text-white">Real Implementation: O2 Czech Republic</h2>
+      </div>
+      <p class="text-lg text-slate-200">
+        The <strong class="text-white">O2 Service Workbench</strong> uses Docker images with GitHub Actions running Playwright tests, bundle size checks, and automated deployment to staging/production environments.
+      </p>
+    </section>
+
+    <section class="space-y-6">
+      <h3 class="text-2xl font-semibold text-white">Related Vocabulary</h3>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/vocabulary/playwright-testing" class="grid-panel">
+          <h4 class="font-semibold text-accent">Playwright Testing</h4>
+          <p class="mt-2 text-sm text-slate-300">E2E tests in CI/CD pipeline</p>
+        </a>
+        <a href="/vocabulary/enterprise-react-developer" class="grid-panel">
+          <h4 class="font-semibold text-accent">Enterprise React Developer</h4>
+          <p class="mt-2 text-sm text-slate-300">DevOps skills for frontend developers</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="rounded-[32px] border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 text-center shadow-card">
+      <h2 class="text-2xl font-semibold text-white">Need DevOps Setup?</h2>
+      <p class="mt-3 text-lg text-slate-200">I configure Docker and CI/CD pipelines for React applications.</p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-6 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink shadow-card transition hover:bg-accentMuted">Contact me</a>
+    </section>
+  </div>
+</BaseLayout>

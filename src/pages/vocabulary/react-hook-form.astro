@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="React Hook Form | Performant Form Validation for Complex Workflows"
+  description="React Hook Form patterns for complex enterprise forms. Multi-step workflows and validation from MONETA Auto project."
+>
+  <div class="mx-auto flex max-w-6xl flex-col gap-12">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href="/" class="transition hover:text-accent">Home</a>
+      <span class="mx-2">→</span>
+      <a href="/vocabulary" class="transition hover:text-accent">Vocabulary</a>
+      <span class="mx-2">→</span>
+      <span class="text-slate-200">React Hook Form</span>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="space-y-4">
+      <p class="eyebrow">Technical Vocabulary</p>
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">React Hook Form</h1>
+      <p class="text-xl text-slate-300">Performant form validation for complex enterprise workflows</p>
+    </section>
+
+    <!-- Definition Card -->
+    <section class="rounded-[32px] border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 shadow-card">
+      <p class="text-lg text-slate-100">
+        <strong class="text-white">Definition:</strong> React Hook Form is a performant form library using uncontrolled components for minimal re-renders, ideal for complex validation scenarios and multi-step workflows in enterprise applications.
+      </p>
+    </section>
+
+    <!-- Content Sections -->
+    <section class="surface-card space-y-6">
+      <div>
+        <h2 class="text-2xl font-semibold text-white">Why React Hook Form vs Formik</h2>
+      </div>
+      <ul class="space-y-3 text-slate-200">
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Better performance:</strong> Fewer re-renders with uncontrolled components</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Smaller bundle size:</strong> ~40KB vs ~150KB for Formik</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Excellent TypeScript support:</strong> Type inference works out of the box</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Built-in validation:</strong> Integration with Yup, Zod, and custom validators</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="surface-card space-y-6">
+      <div>
+        <p class="eyebrow text-accent">Case Study</p>
+        <h2 class="mt-2 text-2xl font-semibold text-white">Real Implementation: MONETA Auto</h2>
+      </div>
+      <p class="text-lg text-slate-200">
+        Used React Hook Form for the <strong class="text-white">MONETA Auto onboarding suite</strong> to handle complex loan application forms with conditional validation, multi-step wizards, and async credit checks.
+      </p>
+    </section>
+
+    <!-- Related Terms -->
+    <section class="space-y-6">
+      <h3 class="text-2xl font-semibold text-white">Related Vocabulary</h3>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/vocabulary/formik-multistep-forms" class="grid-panel">
+          <h4 class="font-semibold text-accent">Formik Multi-Step Forms</h4>
+          <p class="mt-2 text-sm text-slate-300">Alternative form library for complex workflows</p>
+        </a>
+        <a href="/vocabulary/nextjs-enterprise" class="grid-panel">
+          <h4 class="font-semibold text-accent">Next.js Enterprise</h4>
+          <p class="mt-2 text-sm text-slate-300">Framework used in MONETA Auto project</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="rounded-[32px] border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 text-center shadow-card">
+      <h2 class="text-2xl font-semibold text-white">Need Complex Form Development?</h2>
+      <p class="mt-3 text-lg text-slate-200">I build performant, validated forms for enterprise workflows.</p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-6 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink shadow-card transition hover:bg-accentMuted">Contact me</a>
+    </section>
+  </div>
+</BaseLayout>

@@ -3,7 +3,7 @@ export const hero = {
   title: 'Marek Dolníček',
   subtitle: 'Enterprise-ready React developer based in Prague.',
   body:
-    'Over the past decade I have delivered internal portals for TESCO Stores CZ, MONETA Auto, České dráhy, JABLOTRON GROUP and other Czech brands. I own the front-end in React and TypeScript, tie it back to Java or PHP APIs, and keep Material UI and custom design systems lean and performant while constantly learning—from orchestrating AI agents to experimenting with DevOps practices.',
+    'Over the past decade I have delivered internal portals for O2 Czech Republic, TESCO Stores CZ, MONETA Auto, České dráhy, JABLOTRON GROUP and other Czech brands. I own the front-end in React and TypeScript, tie it back to Java or PHP APIs, and keep Material UI and custom design systems lean and performant while constantly learning—from orchestrating AI agents to experimenting with DevOps practices.',
   primaryCta: {
     label: 'Email marekdolnicek@gmail.com',
     href: 'mailto:marekdolnicek@gmail.com'
@@ -40,6 +40,14 @@ export const skillClusters = [
 ];
 
 export const timelineEntries = [
+  {
+    id: 'neovia',
+    year: '2024 – 2026',
+    title: 'Frontend Developer @ NEOVIA',
+    summary:
+      'Extended O2 Czech Republic internal tooling with React/TypeScript modules powered by Redux, Zustand, and Material UI while pairing with DevOps peers on Dockerized GitHub Actions pipelines, MongoDB data, and Playwright quality gates.',
+    stack: ['React', 'TypeScript', 'Redux', 'Zustand', 'Material UI', 'MongoDB', 'Docker']
+  },
   {
     id: 'consware',
     year: '2022 – 2024',
@@ -83,6 +91,13 @@ export const timelineEntries = [
 ];
 
 export const aiIdeas = [
+  {
+    id: 'o2',
+    title: 'O2 Czech Republic care cockpit',
+    description:
+      'React/Redux workspace with Zustand-backed helpers that lets support teams track fiber builds, automate reminders, and run MongoDB-backed reporting while Docker pipelines keep releases safe.',
+    impact: 'Keeps telecom teams on a single view of service health and client escalations.'
+  },
   {
     id: 'tesco',
     title: 'TESCO Stores CZ operations portal',

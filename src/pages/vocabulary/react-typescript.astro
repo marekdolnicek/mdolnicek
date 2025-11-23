@@ -1,0 +1,217 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="React TypeScript Best Practices | Enterprise Development Guide 2025"
+  description="React TypeScript integration guide with enterprise best practices. Learn component typing, advanced patterns, and configuration from 8+ years of production experience."
+>
+  <article class="mx-auto max-w-4xl space-y-8">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href="/" class="hover:text-accent">Home</a> → <a href="/vocabulary" class="hover:text-accent">Vocabulary</a> → <span class="text-slate-200">React TypeScript</span>
+    </nav>
+
+    <header class="space-y-4">
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">React + TypeScript Integration</h1>
+    </header>
+
+    <div class="rounded-2xl border border-accent/30 bg-accent/10 p-6">
+      <p class="text-lg text-slate-100">
+        <strong class="text-white">Definition:</strong> React TypeScript is the practice of building React applications using TypeScript, a strongly-typed superset of JavaScript that adds static type checking, enabling early error detection, better IDE support, and improved code maintainability in enterprise applications.
+      </p>
+    </div>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Why TypeScript + React for Enterprise</h2>
+      <div class="space-y-4 text-slate-200">
+        <p>
+          TypeScript transforms React development by catching errors at compile time instead of runtime. For enterprise projects serving thousands of users daily, this difference is critical—a type error caught during development costs minutes; the same error in production costs hours and damages user trust.
+        </p>
+        <p>
+          Key benefits for enterprise React development:
+        </p>
+        <ul class="list-disc space-y-2 pl-6">
+          <li><strong>Type safety:</strong> Props interfaces, state types, and API contracts prevent invalid data from propagating through components</li>
+          <li><strong>Refactoring confidence:</strong> Rename functions or change prop structures across 100+ files without fear of breaking production</li>
+          <li><strong>Developer experience:</strong> IntelliSense autocomplete, inline documentation, and instant error feedback in VS Code</li>
+          <li><strong>Team collaboration:</strong> Explicit interfaces serve as living documentation, making code readable for developers joining 6 months later</li>
+          <li><strong>Enterprise requirements:</strong> Major corporations mandate TypeScript for mission-critical systems (all 7 of my enterprise portals use TypeScript)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Setup & Configuration</h2>
+      <div class="space-y-4 text-slate-200">
+        <p><strong>TypeScript Configuration (tsconfig.json):</strong></p>
+        <div class="rounded-xl bg-slate-950 p-4 text-sm">
+          <code class="text-slate-300">
+            &#123;<br/>
+            &nbsp;&nbsp;"compilerOptions": &#123;<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;"target": "ES2020",<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;"lib": ["ES2020", "DOM", "DOM.Iterable"],<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;"jsx": "react-jsx",<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;"module": "ESNext",<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;"strict": true,<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;"esModuleInterop": true,<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;"skipLibCheck": true<br/>
+            &nbsp;&nbsp;&#125;<br/>
+            &#125;
+          </code>
+        </div>
+        <p class="pt-4">
+          <strong>Key settings for enterprise projects:</strong> Enable <code class="rounded bg-slate-800 px-2 py-1">strict: true</code> (includes strictNullChecks, noImplicitAny, strictFunctionTypes), use path mapping for clean imports, enable <code class="rounded bg-slate-800 px-2 py-1">noUnusedLocals</code> and <code class="rounded bg-slate-800 px-2 py-1">noUnusedParameters</code> to keep code clean.
+        </p>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Component Typing Patterns</h2>
+      <div class="space-y-4 text-slate-200">
+        <p><strong>1. Functional Components with Props:</strong></p>
+        <div class="rounded-xl bg-slate-950 p-4 text-sm">
+          <code class="text-slate-300">
+            interface ButtonProps &#123;<br/>
+            &nbsp;&nbsp;label: string;<br/>
+            &nbsp;&nbsp;onClick: () => void;<br/>
+            &nbsp;&nbsp;variant?: 'primary' | 'secondary';<br/>
+            &nbsp;&nbsp;disabled?: boolean;<br/>
+            &#125;<br/><br/>
+            const Button: React.FC&lt;ButtonProps&gt; = (&#123; label, onClick, variant = 'primary', disabled &#125;) => &#123;<br/>
+            &nbsp;&nbsp;return &lt;button onClick=&#123;onClick&#125;&gt;&#123;label&#125;&lt;/button&gt;;<br/>
+            &#125;;
+          </code>
+        </div>
+
+        <p class="pt-4"><strong>2. Custom Hooks with TypeScript:</strong></p>
+        <div class="rounded-xl bg-slate-950 p-4 text-sm">
+          <code class="text-slate-300">
+            function useApi&lt;T&gt;(url: string): &#123; data: T | null; loading: boolean; error: Error | null &#125; &#123;<br/>
+            &nbsp;&nbsp;const [data, setData] = useState&lt;T | null&gt;(null);<br/>
+            &nbsp;&nbsp;// ... fetch logic<br/>
+            &nbsp;&nbsp;return &#123; data, loading, error &#125;;<br/>
+            &#125;
+          </code>
+        </div>
+
+        <p class="pt-4"><strong>3. Event Handlers:</strong></p>
+        <div class="rounded-xl bg-slate-950 p-4 text-sm">
+          <code class="text-slate-300">
+            const handleChange = (event: React.ChangeEvent&lt;HTMLInputElement&gt;) => &#123;<br/>
+            &nbsp;&nbsp;console.log(event.target.value);<br/>
+            &#125;;<br/><br/>
+            const handleClick = (event: React.MouseEvent&lt;HTMLButtonElement&gt;) => &#123;<br/>
+            &nbsp;&nbsp;event.preventDefault();<br/>
+            &#125;;
+          </code>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Advanced Patterns</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-accent">Generic Components</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Create reusable components that work with any data type. Example: DataTable&lt;User&gt; vs DataTable&lt;Product&gt; with full type safety for columns and row data.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-accent">Discriminated Unions</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Model complex state machines where different states have different data shapes. Used extensively in O2 ticket workflows and MONETA loan stages.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-accent">Utility Types</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Leverage Pick, Omit, Partial, Required to derive types from existing interfaces. Reduces duplication and keeps types DRY.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-accent">Type Guards</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Narrow union types with custom type predicates. Essential for safely handling API responses and user inputs.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Common Pitfalls & Solutions</h2>
+      <ol class="list-decimal space-y-3 pl-6 text-slate-200">
+        <li><strong>Overusing 'any':</strong> Avoid the 'any' type escape hatch. Use 'unknown' for truly unknown data, then narrow with type guards. Enable <code class="rounded bg-slate-800 px-2 py-1">noImplicitAny</code>.</li>
+        <li><strong>Type Assertions:</strong> Minimize 'as' assertions—they bypass type checking. Prefer type guards and proper inference. Use only when you have information TypeScript doesn't.</li>
+        <li><strong>Missing Library Types:</strong> Install @types packages for third-party libraries. If types don't exist, declare minimal interfaces rather than using 'any'.</li>
+        <li><strong>Complex Generics:</strong> Keep generic constraints simple. If a type signature requires 5 type parameters, consider refactoring the component.</li>
+        <li><strong>Ignoring strictNullChecks:</strong> Enable from day one. Retrofitting null safety into a large codebase is painful (learned from migrating Cool Credit lending system).</li>
+      </ol>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Real Implementation: TESCO Operations Portal</h2>
+      <div class="space-y-4 text-slate-200">
+        <p>
+          The TESCO Stores CZ portal uses TypeScript across 40+ components, 15+ custom hooks, and 20+ API integration functions. Strict mode caught 30+ potential runtime errors during refactoring, preventing production bugs.
+        </p>
+        <p>Key TypeScript wins:</p>
+        <ul class="list-disc space-y-2 pl-6">
+          <li>Campaign planning forms with multi-step validation: TypeScript interfaces ensure each step receives correctly-shaped data</li>
+          <li>Java REST API integration: Generated TypeScript types from OpenAPI specs guarantee frontend-backend contract alignment</li>
+          <li>Redux state management: Strongly-typed actions and reducers prevent invalid state mutations</li>
+          <li>Material UI customization: Theme type augmentation provides autocomplete for custom color tokens</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Tooling & IDE Setup</h2>
+      <div class="space-y-4 text-slate-200">
+        <p><strong>ESLint TypeScript Rules:</strong></p>
+        <ul class="list-disc space-y-1 pl-6">
+          <li>@typescript-eslint/no-explicit-any - ban 'any' usage</li>
+          <li>@typescript-eslint/strict-boolean-expressions - prevent loose boolean checks</li>
+          <li>@typescript-eslint/no-unnecessary-type-assertion - remove redundant casts</li>
+        </ul>
+
+        <p class="pt-4"><strong>VS Code Extensions:</strong></p>
+        <ul class="list-disc space-y-1 pl-6">
+          <li>TypeScript IntelliSense (built-in) for autocomplete and error highlighting</li>
+          <li>Prettier for consistent code formatting</li>
+          <li>Error Lens to display TypeScript errors inline</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h3 class="text-xl font-semibold text-white">Related Vocabulary</h3>
+      <ul class="grid gap-3 sm:grid-cols-2">
+        <li><a href="/vocabulary/enterprise-react-developer" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">Enterprise React Developer</a></li>
+        <li><a href="/vocabulary/material-ui-design-system" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">Material UI Design System</a></li>
+        <li><a href="/vocabulary/redux-state-management" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">Redux State Management</a></li>
+        <li><a href="/vocabulary/nextjs-enterprise" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">Next.js Enterprise</a></li>
+      </ul>
+    </section>
+
+    <section class="rounded-2xl border border-accent/30 bg-accent/5 p-6 text-center">
+      <h2 class="text-2xl font-semibold text-white">Need React TypeScript Expertise?</h2>
+      <p class="mt-3 text-slate-200">8+ years building type-safe React applications for enterprise clients across banking, retail, and telecommunications.</p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-4 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink transition hover:bg-accentMuted">Let's discuss your project</a>
+    </section>
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "React TypeScript Best Practices | Enterprise Development Guide",
+    "author": {
+      "@type": "Person",
+      "name": "Marek Dolníček",
+      "url": "https://mdolnicek.eu"
+    },
+    "datePublished": "2025-11-23",
+    "description": "React TypeScript integration guide with enterprise best practices. Component typing, advanced patterns, and configuration.",
+    "mainEntityOfPage": "https://mdolnicek.eu/vocabulary/react-typescript"
+  })}></script>
+</BaseLayout>

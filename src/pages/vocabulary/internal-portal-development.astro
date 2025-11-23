@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Internal Portal Development with React | Marek Dolníček"
+  description="Internal portal development for banking, retail, and telecommunications. React/TypeScript solutions built for O2, TESCO, MONETA Auto, and České dráhy."
+>
+  <article class="mx-auto max-w-4xl space-y-8">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href="/" class="hover:text-accent">Home</a> → <a href="/vocabulary" class="hover:text-accent">Vocabulary</a> → <span class="text-slate-200">Internal Portal Development</span>
+    </nav>
+
+    <header class="space-y-4">
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">Internal Portal Development</h1>
+    </header>
+
+    <div class="rounded-2xl border border-accent/30 bg-accent/10 p-6">
+      <p class="text-lg text-slate-100">
+        <strong class="text-white">Definition:</strong> Internal Portal Development is the creation of web-based applications designed exclusively for an organization's employees, partners, or internal stakeholders to streamline business operations, centralize data access, and improve workflow efficiency through custom dashboards, forms, and reporting tools.
+      </p>
+    </div>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">What Are Internal Portals?</h2>
+      <div class="space-y-4 text-slate-200">
+        <p>
+          Internal portals are private web applications that companies build for their employees, not for public customers. Unlike customer-facing websites, internal portals prioritize functionality over marketing, focus on productivity over aesthetics, and serve specific business workflows.
+        </p>
+        <p>
+          These systems power critical enterprise operations: customer support teams use care cockpits to manage escalations, store managers use operations portals to plan campaigns, loan officers use onboarding suites to process applications, and technicians use service dashboards to track installations.
+        </p>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Common Use Cases</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-accent">Operations Dashboards (TESCO)</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Store teams use React/TypeScript portals to manage inventory, plan marketing campaigns, and coordinate logistics across Czech hypermarkets. Backend: Java REST API + PostgreSQL.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-accent">Customer Care Tools (O2)</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            200+ support agents track fiber network builds, manage service escalations, and run MongoDB-backed reports through Redux/Zustand state management with automated reminders.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-accent">Onboarding Systems (MONETA)</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Loan advisors process automotive finance applications via Next.js + React Hook Form with complex multi-step validations and REST API integrations for credit checks.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-accent">Service Management (JABLOTRON)</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Hardware partners inspect device deployments and share updates through Gatsby applications aggregating data via GraphQL with automated accessibility checks.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Technology Stack</h2>
+      <div class="space-y-4 text-slate-200">
+        <p><strong>Frontend:</strong></p>
+        <ul class="list-disc space-y-1 pl-6">
+          <li><a href="/vocabulary/react-typescript" class="text-accent hover:underline">React + TypeScript</a> for type-safe component development</li>
+          <li><a href="/vocabulary/nextjs-enterprise" class="text-accent hover:underline">Next.js</a> for server-side rendering or Gatsby for static generation</li>
+          <li><a href="/vocabulary/material-ui-design-system" class="text-accent hover:underline">Material UI</a> or custom design systems for UI consistency</li>
+          <li><a href="/vocabulary/redux-state-management" class="text-accent hover:underline">Redux</a>, Zustand, or React Query for state management</li>
+          <li><a href="/vocabulary/react-hook-form" class="text-accent hover:underline">React Hook Form</a> or Formik for complex form workflows</li>
+        </ul>
+
+        <p class="pt-4"><strong>Backend & Data:</strong></p>
+        <ul class="list-disc space-y-1 pl-6">
+          <li>Java or PHP REST APIs for business logic</li>
+          <li><a href="/vocabulary/graphql-integration" class="text-accent hover:underline">GraphQL</a> for flexible data queries</li>
+          <li><a href="/vocabulary/postgresql-react" class="text-accent hover:underline">PostgreSQL</a> for relational data or <a href="/vocabulary/mongodb-react-dashboard" class="text-accent hover:underline">MongoDB</a> for flexible schemas</li>
+          <li>OAuth 2.0, SAML, or Active Directory for authentication</li>
+        </ul>
+
+        <p class="pt-4"><strong>DevOps & Quality:</strong></p>
+        <ul class="list-disc space-y-1 pl-6">
+          <li><a href="/vocabulary/docker-github-actions-cicd" class="text-accent hover:underline">Docker + GitHub Actions</a> for automated deployments</li>
+          <li><a href="/vocabulary/playwright-testing" class="text-accent hover:underline">Playwright</a> for end-to-end testing</li>
+          <li>Performance monitoring (Sentry, DataDog) and error tracking</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Development Process</h2>
+      <ol class="list-decimal space-y-3 pl-6 text-slate-200">
+        <li><strong>Discovery & Requirements:</strong> Interview stakeholders, shadow end users, document current workflows and pain points (2-4 weeks)</li>
+        <li><strong>Design & Architecture:</strong> Create wireframes, define data models, choose tech stack, plan API contracts (2-3 weeks)</li>
+        <li><strong>MVP Development:</strong> Build core features, implement authentication, connect to backend APIs (6-12 weeks)</li>
+        <li><strong>Iteration & Testing:</strong> User acceptance testing, bug fixes, performance optimization, accessibility audit (4-6 weeks)</li>
+        <li><strong>Deployment & Training:</strong> Production rollout, user training, documentation, monitoring setup (2-3 weeks)</li>
+        <li><strong>Maintenance & Enhancement:</strong> Ongoing feature additions, bug fixes, performance tuning (continuous)</li>
+      </ol>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">ROI for Businesses</h2>
+      <div class="space-y-4 text-slate-200">
+        <p>Well-designed internal portals deliver measurable business value:</p>
+        <ul class="list-disc space-y-2 pl-6">
+          <li><strong>Efficiency gains:</strong> 30-50% reduction in time spent on manual data entry and report generation</li>
+          <li><strong>Error reduction:</strong> Validation rules and automated workflows cut human errors by 60-80%</li>
+          <li><strong>Data centralization:</strong> Single source of truth eliminates duplicate records and conflicting information</li>
+          <li><strong>Compliance:</strong> Audit trails, role-based access control, and automated logging ensure regulatory compliance</li>
+          <li><strong>Scalability:</strong> Support business growth without proportional headcount increases</li>
+        </ul>
+        <p>
+          For example, the O2 Service Workbench achieved 40% faster ticket resolution and 95% user adoption within 3 months, directly impacting customer satisfaction scores.
+        </p>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Security Considerations</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-white">Authentication & Authorization</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Role-based access control (RBAC), integration with corporate SSO (OAuth/SAML), multi-factor authentication for sensitive operations.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-white">Data Protection</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Encryption at rest and in transit (TLS 1.3), GDPR compliance for personal data, secure API endpoints with rate limiting.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-white">Audit Logging</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Track all user actions (create, read, update, delete), maintain immutable audit trails for compliance investigations.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-white">Network Security</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            VPN-only access, IP whitelisting, firewall rules, DDoS protection, regular penetration testing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Case Study Preview: 4 Enterprise Portals</h2>
+      <div class="space-y-3 text-slate-200">
+        <p>
+          <strong>O2 Czech Republic Service Workbench:</strong> React/Redux workspace for 200+ support agents managing fiber builds, escalations, and MongoDB reports with Docker CI/CD.
+        </p>
+        <p>
+          <strong>TESCO Stores CZ Operations Portal:</strong> Material UI dashboards for store teams with Java REST APIs, PostgreSQL backend, and Formik multi-step forms.
+        </p>
+        <p>
+          <strong>MONETA Auto Onboarding Suite:</strong> Next.js loan processing platform with React Hook Form validations and REST integrations for automotive finance.
+        </p>
+        <p>
+          <strong>JABLOTRON Service Dashboard:</strong> Gatsby application with GraphQL data aggregation, automated Jest checks, and accessibility compliance.
+        </p>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h3 class="text-xl font-semibold text-white">Related Vocabulary</h3>
+      <ul class="grid gap-3 sm:grid-cols-2">
+        <li><a href="/vocabulary/enterprise-react-developer" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">Enterprise React Developer</a></li>
+        <li><a href="/vocabulary/material-ui-design-system" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">Material UI Design System</a></li>
+        <li><a href="/vocabulary/react-typescript" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">React TypeScript</a></li>
+        <li><a href="/vocabulary/redux-state-management" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">Redux State Management</a></li>
+      </ul>
+    </section>
+
+    <section class="rounded-2xl border border-accent/30 bg-accent/5 p-6 text-center">
+      <h2 class="text-2xl font-semibold text-white">Need an Internal Portal Solution?</h2>
+      <p class="mt-3 text-slate-200">I specialize in React/TypeScript internal portals for banking, retail, and telecommunications in Czech Republic.</p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-4 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink transition hover:bg-accentMuted">Let's discuss your requirements</a>
+    </section>
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Internal Portal Development with React",
+    "author": {
+      "@type": "Person",
+      "name": "Marek Dolníček",
+      "url": "https://mdolnicek.eu"
+    },
+    "datePublished": "2025-11-23",
+    "description": "Internal portal development for banking, retail, and telecommunications. React/TypeScript solutions for O2, TESCO, MONETA Auto, České dráhy.",
+    "mainEntityOfPage": "https://mdolnicek.eu/vocabulary/internal-portal-development"
+  })}></script>
+</BaseLayout>

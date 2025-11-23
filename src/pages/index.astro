@@ -17,7 +17,38 @@ import portrait from '../assets/profilovka_md.png';
 import { getCollection } from 'astro:content';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+
+// Map technology names to vocabulary page slugs
+const techSlugMap: Record<string, string> = {
+  'React': 'react-typescript',
+  'TypeScript': 'react-typescript',
+  'Redux': 'redux-state-management',
+  'Zustand': 'zustand-state-management',
+  'Material UI': 'material-ui-design-system',
+  'MongoDB': 'mongodb-react-dashboard',
+  'Docker': 'docker-github-actions-cicd',
+  'Playwright': 'playwright-testing',
+  'Next.js': 'nextjs-enterprise',
+  'React Hook Form': 'react-hook-form',
+  'Formik': 'formik-multistep-forms',
+  'PostgreSQL': 'postgresql-react',
+  'GraphQL': 'graphql-integration',
+  'Gatsby': 'gatsby-graphql'
+};
 ---
+
+<style>
+  .keyword-highlight {
+    background: linear-gradient(180deg, transparent 60%, rgba(var(--accent-rgb), 0.2) 60%);
+    font-weight: 500;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s;
+  }
+  .keyword-highlight:hover {
+    background: linear-gradient(180deg, transparent 50%, rgba(var(--accent-rgb), 0.35) 50%);
+  }
+</style>
 
 <BaseLayout>
   <section class="rounded-[32px] border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-8 shadow-card">
@@ -68,15 +99,23 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
         <h2 class="text-3xl font-semibold text-white">Systems used daily by Czech teams</h2>
       </div>
       <p class="text-lg text-slate-200">
-        I ship maintainable React and TypeScript apps for banks, rail operators, and retailers. Data flows from Java, PHP, or GraphQL APIs into accessible Material UI and CSS systems that keep store teams productive, while ongoing experiments with AI agents and light DevOps routines keep delivery improving every sprint.
+        I ship maintainable <a href="/vocabulary/react-typescript" class="keyword-highlight">React and TypeScript</a> apps for banks, rail operators, and retailers. Data flows from Java, PHP, or <a href="/vocabulary/graphql-integration" class="keyword-highlight">GraphQL</a> APIs into accessible <a href="/vocabulary/material-ui-design-system" class="keyword-highlight">Material UI</a> and CSS systems that keep store teams productive, while ongoing experiments with AI agents and <a href="/vocabulary/docker-github-actions-cicd" class="keyword-highlight">CI/CD</a> routines keep delivery improving every sprint.
       </p>
       <ul class="grid gap-4 sm:grid-cols-3">
         {skillClusters.map((cluster) => (
-          <li key={cluster.name} class="rounded-3xl border border-white/10 bg-white/5 p-4">
+          <li class="rounded-3xl border border-white/10 bg-white/5 p-4">
             <p class="text-sm font-semibold text-white">{cluster.name}</p>
             <ul class="mt-2 space-y-1 text-sm text-slate-300">
               {cluster.bullets.map((item) => (
-                <li key={item}>{item}</li>
+                <li set:html={item
+                  .replace(/React, Next\.js & Gatsby/g, '<a href="/vocabulary/react-typescript" class="keyword-highlight">React</a>, <a href="/vocabulary/nextjs-enterprise" class="keyword-highlight">Next.js</a> & Gatsby')
+                  .replace(/Redux/g, '<a href="/vocabulary/redux-state-management" class="keyword-highlight">Redux</a>')
+                  .replace(/Formik/g, '<a href="/vocabulary/formik-multistep-forms" class="keyword-highlight">Formik</a>')
+                  .replace(/React Hook Form/g, '<a href="/vocabulary/react-hook-form" class="keyword-highlight">React Hook Form</a>')
+                  .replace(/Material UI/g, '<a href="/vocabulary/material-ui-design-system" class="keyword-highlight">Material UI</a>')
+                  .replace(/GraphQL/g, '<a href="/vocabulary/graphql-integration" class="keyword-highlight">GraphQL</a>')
+                  .replace(/PostgreSQL/g, '<a href="/vocabulary/postgresql-react" class="keyword-highlight">PostgreSQL</a>')
+                }></li>
               ))}
             </ul>
           </li>
@@ -100,9 +139,14 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
             <p class="mt-2 text-slate-200">{project.data.summary}</p>
           </div>
           <div class="flex flex-wrap gap-2">
-            {project.data.stack.map((tech) => (
-              <span class="pill" key={tech}>{tech}</span>
-            ))}
+            {project.data.stack.map((tech) => {
+              const slug = techSlugMap[tech];
+              return slug ? (
+                <a href={`/vocabulary/${slug}`} class="pill keyword-highlight">{tech}</a>
+              ) : (
+                <span class="pill">{tech}</span>
+              );
+            })}
           </div>
           {project.data.link && (
             <a class="text-sm font-semibold text-accent underline-offset-4 hover:underline" href={project.data.link}>

@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="GraphQL Integration | Flexible API Data Queries"
+  description="GraphQL integration patterns for React applications. Learn how to query exactly the data you need from APIs."
+>
+  <div class="mx-auto flex max-w-6xl flex-col gap-12">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href="/" class="transition hover:text-accent">Home</a>
+      <span class="mx-2">→</span>
+      <a href="/vocabulary" class="transition hover:text-accent">Vocabulary</a>
+      <span class="mx-2">→</span>
+      <span class="text-slate-200">GraphQL Integration</span>
+    </nav>
+
+    <section class="space-y-4">
+      <p class="eyebrow">Backend Integration</p>
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">GraphQL Integration</h1>
+      <p class="text-xl text-slate-300">Query exactly the data you need from APIs</p>
+    </section>
+
+    <section class="rounded-[32px] border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 shadow-card">
+      <p class="text-lg text-slate-100">
+        <strong class="text-white">Definition:</strong> GraphQL is a query language for APIs that enables clients to request exactly the data they need, reducing over-fetching and under-fetching compared to traditional REST APIs.
+      </p>
+    </section>
+
+    <section class="surface-card space-y-6">
+      <div>
+        <h2 class="text-2xl font-semibold text-white">Benefits for Enterprise React Apps</h2>
+      </div>
+      <ul class="space-y-3 text-slate-200">
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Single request:</strong> Fetch related data without multiple REST calls</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Strong typing:</strong> GraphQL schema matches TypeScript perfectly</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Flexible queries:</strong> Frontend evolves without backend changes</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Reduced bandwidth:</strong> Request only needed fields</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="surface-card space-y-6">
+      <div>
+        <p class="eyebrow text-accent">Case Study</p>
+        <h2 class="mt-2 text-2xl font-semibold text-white">Real Implementation: JABLOTRON</h2>
+      </div>
+      <p class="text-lg text-slate-200">
+        The <strong class="text-white">JABLOTRON service dashboard</strong> uses Gatsby + GraphQL to aggregate device and installer data from multiple sources, providing hardware partners a unified view of deployments.
+      </p>
+    </section>
+
+    <section class="space-y-6">
+      <h3 class="text-2xl font-semibold text-white">Related Vocabulary</h3>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/vocabulary/gatsby-graphql" class="grid-panel">
+          <h4 class="font-semibold text-accent">Gatsby + GraphQL</h4>
+          <p class="mt-2 text-sm text-slate-300">Static site generation with GraphQL</p>
+        </a>
+        <a href="/vocabulary/react-typescript" class="grid-panel">
+          <h4 class="font-semibold text-accent">React TypeScript</h4>
+          <p class="mt-2 text-sm text-slate-300">Type-safe GraphQL queries</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="rounded-[32px] border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 text-center shadow-card">
+      <h2 class="text-2xl font-semibold text-white">Need GraphQL Integration?</h2>
+      <p class="mt-3 text-lg text-slate-200">I've integrated GraphQL APIs in multiple enterprise projects.</p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-6 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink shadow-card transition hover:bg-accentMuted">Contact me</a>
+    </section>
+  </div>
+</BaseLayout>

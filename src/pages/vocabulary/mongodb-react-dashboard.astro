@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="MongoDB React Dashboard | Real-Time Enterprise Analytics"
+  description="MongoDB React dashboard implementation for enterprise analytics with real-time updates from O2 Czech Republic."
+>
+  <div class="mx-auto flex max-w-6xl flex-col gap-12">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href="/" class="transition hover:text-accent">Home</a>
+      <span class="mx-2">→</span>
+      <a href="/vocabulary" class="transition hover:text-accent">Vocabulary</a>
+      <span class="mx-2">→</span>
+      <span class="text-slate-200">MongoDB React Dashboard</span>
+    </nav>
+
+    <section class="space-y-4">
+      <p class="eyebrow">Backend Integration</p>
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">MongoDB React Dashboard</h1>
+      <p class="text-xl text-slate-300">Real-time analytics with flexible schema</p>
+    </section>
+
+    <section class="rounded-[32px] border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 shadow-card">
+      <p class="text-lg text-slate-100">
+        <strong class="text-white">Definition:</strong> Building real-time analytics dashboards with MongoDB backend and React frontend for flexible schema data, aggregation pipelines, and live updates.
+      </p>
+    </section>
+
+    <section class="surface-card space-y-6">
+      <div>
+        <h2 class="text-2xl font-semibold text-white">Dashboard Patterns</h2>
+      </div>
+      <ul class="space-y-3 text-slate-200">
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Metrics cards:</strong> KPIs and trend indicators</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Real-time charts:</strong> Data visualization with live updates</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Filtering & drill-down:</strong> Interactive data exploration</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">WebSocket updates:</strong> Live data synchronization</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="surface-card space-y-6">
+      <div>
+        <p class="eyebrow text-accent">Case Study</p>
+        <h2 class="mt-2 text-2xl font-semibold text-white">Real Implementation: O2 Czech Republic</h2>
+      </div>
+      <p class="text-lg text-slate-200">
+        The <strong class="text-white">O2 care cockpit</strong> uses MongoDB aggregation pipelines for real-time reporting on service tickets, customer escalations, and team performance metrics for 200+ support agents.
+      </p>
+    </section>
+
+    <section class="space-y-6">
+      <h3 class="text-2xl font-semibold text-white">Related Vocabulary</h3>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/vocabulary/postgresql-react" class="grid-panel">
+          <h4 class="font-semibold text-accent">PostgreSQL React</h4>
+          <p class="mt-2 text-sm text-slate-300">Relational database alternative</p>
+        </a>
+        <a href="/vocabulary/redux-state-management" class="grid-panel">
+          <h4 class="font-semibold text-accent">Redux State Management</h4>
+          <p class="mt-2 text-sm text-slate-300">Managing dashboard state</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="rounded-[32px] border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 text-center shadow-card">
+      <h2 class="text-2xl font-semibold text-white">Need Dashboard Development?</h2>
+      <p class="mt-3 text-lg text-slate-200">I build real-time analytics dashboards with MongoDB and React.</p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-6 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink shadow-card transition hover:bg-accentMuted">Let's talk</a>
+    </section>
+  </div>
+</BaseLayout>

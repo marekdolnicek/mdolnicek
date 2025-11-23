@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="What is an Enterprise React Developer? | Marek Dolníček"
+  description="Enterprise React developers build scalable internal portals for corporations. Learn the skills, technologies, and best practices from a developer with 7 enterprise portals delivered."
+>
+  <article class="mx-auto max-w-4xl space-y-8">
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href="/" class="hover:text-accent">Home</a> → <a href="/vocabulary" class="hover:text-accent">Vocabulary</a> → <span class="text-slate-200">Enterprise React Developer</span>
+    </nav>
+
+    <!-- Main Heading -->
+    <header class="space-y-4">
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">What is an Enterprise React Developer?</h1>
+    </header>
+
+    <!-- Quick Definition -->
+    <div class="rounded-2xl border border-accent/30 bg-accent/10 p-6">
+      <p class="text-lg text-slate-100">
+        <strong class="text-white">Definition:</strong> An Enterprise React Developer is a frontend specialist who builds large-scale, mission-critical React applications for corporations, handling complex business requirements, multiple stakeholder needs, and enterprise-grade quality standards including security, performance, and maintainability.
+      </p>
+    </div>
+
+    <!-- Detailed Explanation -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Understanding Enterprise React Development</h2>
+      <div class="space-y-4 text-slate-200">
+        <p>
+          Enterprise React development differs significantly from startup or personal project development. While the core technology remains React, the approach, architecture, and priorities shift dramatically when building for large organizations.
+        </p>
+        <p>
+          Enterprise developers work on <a href="/vocabulary/internal-portal-development" class="text-accent hover:underline">internal portals</a>, customer-facing platforms, and business-critical systems that serve hundreds or thousands of users daily. These applications must integrate with existing enterprise infrastructure, meet strict compliance requirements, and maintain high availability.
+        </p>
+        <p>
+          The role requires balancing technical excellence with business pragmatism—choosing proven technologies over cutting-edge experiments, prioritizing maintainability over cleverness, and designing for team collaboration rather than individual heroics.
+        </p>
+      </div>
+    </section>
+
+    <!-- Real-World Application -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">How I Apply Enterprise React Development</h2>
+      <div class="space-y-4 text-slate-200">
+        <p>
+          Over the past 8+ years, I've delivered 7 enterprise portals for major Czech corporations including O2 Czech Republic, TESCO Stores CZ, MONETA Auto, České dráhy, and JABLOTRON GROUP. Each project shared common enterprise characteristics:
+        </p>
+        <ul class="list-disc space-y-2 pl-6">
+          <li><strong>Multiple stakeholder management:</strong> Product owners, business analysts, QA teams, DevOps engineers, and end users all influence requirements</li>
+          <li><strong>Legacy system integration:</strong> Connecting React frontends to Java REST APIs, PHP backends, and PostgreSQL/MongoDB databases</li>
+          <li><strong>Strict quality gates:</strong> Comprehensive testing with Playwright, code review processes, accessibility compliance (WCAG 2.1 AA)</li>
+          <li><strong>Performance requirements:</strong> Sub-second load times, bundle size limits, Core Web Vitals targets</li>
+          <li><strong>Security protocols:</strong> Authentication, authorization, audit logging, data encryption</li>
+        </ul>
+        <p>
+          For example, the <strong>O2 Czech Republic Service Workbench</strong> serves 200+ support agents managing fiber network builds and customer escalations. The system uses <a href="/vocabulary/redux-state-management" class="text-accent hover:underline">Redux for global state</a>, <a href="/vocabulary/zustand-state-management" class="text-accent hover:underline">Zustand for feature-specific state</a>, and <a href="/vocabulary/material-ui-design-system" class="text-accent hover:underline">Material UI customized</a> to O2 brand guidelines—all while maintaining 85% test coverage and zero critical production bugs in 6 months.
+        </p>
+      </div>
+    </section>
+
+    <!-- Key Technologies -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Key Technologies & Concepts</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-white">Frontend Stack</h3>
+          <ul class="mt-2 space-y-1 text-sm text-slate-300">
+            <li><a href="/vocabulary/react-typescript" class="text-accent hover:underline">React + TypeScript</a> for type-safe components</li>
+            <li><a href="/vocabulary/nextjs-enterprise" class="text-accent hover:underline">Next.js</a> or Gatsby for framework support</li>
+            <li><a href="/vocabulary/material-ui-design-system" class="text-accent hover:underline">Material UI</a> or custom design systems</li>
+            <li><a href="/vocabulary/redux-state-management" class="text-accent hover:underline">Redux</a>, Zustand, or React Query for state</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-white">Backend Integration</h3>
+          <ul class="mt-2 space-y-1 text-sm text-slate-300">
+            <li>Java or PHP REST APIs</li>
+            <li><a href="/vocabulary/graphql-integration" class="text-accent hover:underline">GraphQL</a> data layers</li>
+            <li><a href="/vocabulary/postgresql-react" class="text-accent hover:underline">PostgreSQL</a> or <a href="/vocabulary/mongodb-react-dashboard" class="text-accent hover:underline">MongoDB</a> databases</li>
+            <li>OAuth/SAML authentication</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-white">Quality & DevOps</h3>
+          <ul class="mt-2 space-y-1 text-sm text-slate-300">
+            <li><a href="/vocabulary/playwright-testing" class="text-accent hover:underline">Playwright</a> for E2E testing</li>
+            <li>Jest/Vitest for unit tests</li>
+            <li><a href="/vocabulary/docker-github-actions-cicd" class="text-accent hover:underline">Docker + GitHub Actions CI/CD</a></li>
+            <li>Performance monitoring & error tracking</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-white">Soft Skills</h3>
+          <ul class="mt-2 space-y-1 text-sm text-slate-300">
+            <li>Stakeholder communication</li>
+            <li>Technical documentation</li>
+            <li>Code review & mentoring</li>
+            <li>Agile/Scrum practices</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Practices -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Best Practices for Enterprise React Development</h2>
+      <ol class="list-decimal space-y-3 pl-6 text-slate-200">
+        <li><strong>Prioritize maintainability over cleverness:</strong> Code will be read and modified by multiple developers over years. Clear, conventional patterns beat clever abstractions.</li>
+        <li><strong>Design for testability:</strong> Write components that can be tested in isolation. Aim for 80%+ coverage on critical paths.</li>
+        <li><strong>Use TypeScript strictly:</strong> Enable strict mode, avoid 'any', create proper interfaces. TypeScript catches bugs before production.</li>
+        <li><strong>Implement proper error boundaries:</strong> Don't let a broken widget crash the entire application. Graceful degradation is essential.</li>
+        <li><strong>Monitor performance continuously:</strong> Track bundle sizes, measure Core Web Vitals, set performance budgets in CI/CD.</li>
+        <li><strong>Document architectural decisions:</strong> Use ADRs (Architecture Decision Records) to explain why certain patterns or libraries were chosen.</li>
+        <li><strong>Plan for scalability from day one:</strong> Code splitting, lazy loading, optimized re-renders—these become harder to add later.</li>
+      </ol>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Frequently Asked Questions</h2>
+      <dl class="space-y-4">
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <dt class="font-semibold text-white">What's the difference between enterprise and startup React development?</dt>
+          <dd class="mt-2 text-slate-200">
+            Enterprise development emphasizes stability, security, and maintainability over speed. Startups move fast and break things; enterprises need systems that run reliably for years with multiple teams contributing code. Enterprise projects have more stakeholders, stricter compliance requirements, and longer timelines.
+          </dd>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <dt class="font-semibold text-white">How long does enterprise portal development take?</dt>
+          <dd class="mt-2 text-slate-200">
+            A typical enterprise portal takes 3-12 months from requirements gathering to production deployment. Simple dashboards might launch in 3-4 months, while complex multi-module systems (like the O2 Service Workbench) take 8-12 months. Ongoing maintenance and feature additions continue indefinitely.
+          </dd>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <dt class="font-semibold text-white">What are common enterprise React challenges?</dt>
+          <dd class="mt-2 text-slate-200">
+            The biggest challenges are: (1) Integrating with legacy backend systems, (2) Managing state across large applications, (3) Coordinating work across multiple teams, (4) Meeting accessibility and security requirements, and (5) Maintaining performance as the codebase grows. Each requires specific architectural patterns and discipline.
+          </dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- Related Terms -->
+    <section class="space-y-4">
+      <h3 class="text-xl font-semibold text-white">Related Vocabulary</h3>
+      <ul class="grid gap-3 sm:grid-cols-2">
+        <li><a href="/vocabulary/internal-portal-development" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">Internal Portal Development</a></li>
+        <li><a href="/vocabulary/material-ui-design-system" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">Material UI Design System</a></li>
+        <li><a href="/vocabulary/redux-state-management" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">Redux State Management</a></li>
+        <li><a href="/vocabulary/react-typescript" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">React TypeScript Integration</a></li>
+      </ul>
+    </section>
+
+    <!-- CTA -->
+    <section class="rounded-2xl border border-accent/30 bg-accent/5 p-6 text-center">
+      <h2 class="text-2xl font-semibold text-white">Need an Enterprise React Developer?</h2>
+      <p class="mt-3 text-slate-200">I specialize in React/TypeScript internal portals for banking, retail, and telecommunications companies in Czech Republic and Europe.</p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-4 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink transition hover:bg-accentMuted">Let's discuss your project</a>
+    </section>
+  </article>
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What is an Enterprise React Developer?",
+    "author": {
+      "@type": "Person",
+      "name": "Marek Dolníček",
+      "url": "https://mdolnicek.eu"
+    },
+    "datePublished": "2025-11-23",
+    "description": "Enterprise React developers build scalable internal portals for corporations. Learn the skills, technologies, and best practices from a developer with 7 enterprise portals delivered.",
+    "mainEntityOfPage": "https://mdolnicek.eu/vocabulary/enterprise-react-developer"
+  })}></script>
+</BaseLayout>

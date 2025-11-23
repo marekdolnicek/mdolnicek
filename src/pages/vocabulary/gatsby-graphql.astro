@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Gatsby + GraphQL | Static Site Generation for Enterprise"
+  description="Gatsby GraphQL integration for enterprise service dashboards with automated testing from JABLOTRON implementation."
+>
+  <div class="mx-auto flex max-w-6xl flex-col gap-12">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href="/" class="transition hover:text-accent">Home</a>
+      <span class="mx-2">→</span>
+      <a href="/vocabulary" class="transition hover:text-accent">Vocabulary</a>
+      <span class="mx-2">→</span>
+      <span class="text-slate-200">Gatsby + GraphQL</span>
+    </nav>
+
+    <section class="space-y-4">
+      <p class="eyebrow">Frameworks</p>
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">Gatsby + GraphQL</h1>
+      <p class="text-xl text-slate-300">Static site generation with flexible data sourcing</p>
+    </section>
+
+    <section class="rounded-[32px] border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 shadow-card">
+      <p class="text-lg text-slate-100">
+        <strong class="text-white">Definition:</strong> Gatsby is a React-based static site generator using GraphQL for data sourcing, ideal for documentation portals, marketing sites, and content-heavy enterprise applications.
+      </p>
+    </section>
+
+    <section class="surface-card space-y-6">
+      <div>
+        <h2 class="text-2xl font-semibold text-white">Enterprise Use Cases</h2>
+      </div>
+      <ul class="space-y-3 text-slate-200">
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Documentation portals:</strong> Fast static pages with search</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Service dashboards:</strong> Aggregate data from multiple sources</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Marketing sites:</strong> Excellent SEO performance</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Content platforms:</strong> Headless CMS integration</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="surface-card space-y-6">
+      <div>
+        <p class="eyebrow text-accent">Case Study</p>
+        <h2 class="mt-2 text-2xl font-semibold text-white">Real Implementation: JABLOTRON</h2>
+      </div>
+      <p class="text-lg text-slate-200">
+        Built the <strong class="text-white">JABLOTRON service dashboard</strong> with Gatsby + GraphQL to aggregate device and installer data, providing hardware partners unified deployment visibility with automated Jest checks.
+      </p>
+    </section>
+
+    <section class="space-y-6">
+      <h3 class="text-2xl font-semibold text-white">Related Vocabulary</h3>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/vocabulary/graphql-integration" class="grid-panel">
+          <h4 class="font-semibold text-accent">GraphQL Integration</h4>
+          <p class="mt-2 text-sm text-slate-300">Flexible data querying</p>
+        </a>
+        <a href="/vocabulary/react-typescript" class="grid-panel">
+          <h4 class="font-semibold text-accent">React TypeScript</h4>
+          <p class="mt-2 text-sm text-slate-300">Type-safe Gatsby development</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="rounded-[32px] border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 text-center shadow-card">
+      <h2 class="text-2xl font-semibold text-white">Need Gatsby Development?</h2>
+      <p class="mt-3 text-lg text-slate-200">I build performant static sites with Gatsby + GraphQL for enterprise clients.</p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-6 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink shadow-card transition hover:bg-accentMuted">Get in touch</a>
+    </section>
+  </div>
+</BaseLayout>

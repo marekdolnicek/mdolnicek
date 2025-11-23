@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const vocabularyTerms = [
+  {
+    slug: 'enterprise-react-developer',
+    title: 'Enterprise React Developer',
+    description: 'Frontend specialists building large-scale, mission-critical React applications for corporations with enterprise-grade quality standards.',
+    category: 'Roles & Expertise'
+  },
+  {
+    slug: 'internal-portal-development',
+    title: 'Internal Portal Development',
+    description: 'Creating web applications exclusively for employees to streamline business operations, centralize data access, and improve workflow efficiency.',
+    category: 'Services'
+  },
+  {
+    slug: 'material-ui-design-system',
+    title: 'Material UI Design System',
+    description: 'Customized implementation of Material Design using MUI React components, tailored to match company brand identity while maintaining accessibility.',
+    category: 'UI & Design'
+  },
+  {
+    slug: 'react-typescript',
+    title: 'React + TypeScript',
+    description: 'Building React applications with TypeScript for static type checking, early error detection, and improved code maintainability.',
+    category: 'Technologies'
+  },
+  {
+    slug: 'redux-state-management',
+    title: 'Redux State Management',
+    description: 'Predictable state management library that centralizes application state, particularly valuable for complex enterprise React applications.',
+    category: 'State Management'
+  },
+  {
+    slug: 'zustand-state-management',
+    title: 'Zustand State Management',
+    description: 'Lightweight, hooks-based state management library with minimal boilerplate—ideal for feature-specific state or simpler alternative to Redux.',
+    category: 'State Management'
+  },
+  {
+    slug: 'nextjs-enterprise',
+    title: 'Next.js for Enterprise',
+    description: 'React framework with server-side rendering, static generation, and API routes for enterprise-grade web applications.',
+    category: 'Frameworks'
+  },
+  {
+    slug: 'gatsby-graphql',
+    title: 'Gatsby + GraphQL',
+    description: 'Static site generation with GraphQL data layer, ideal for documentation portals and content-heavy enterprise sites.',
+    category: 'Frameworks'
+  },
+  {
+    slug: 'graphql-integration',
+    title: 'GraphQL Integration',
+    description: 'Flexible data query language enabling clients to request exactly the data they need from APIs.',
+    category: 'Backend Integration'
+  },
+  {
+    slug: 'postgresql-react',
+    title: 'PostgreSQL + React Integration',
+    description: 'Connecting React frontends to PostgreSQL databases via REST or GraphQL APIs for relational data management.',
+    category: 'Backend Integration'
+  },
+  {
+    slug: 'mongodb-react-dashboard',
+    title: 'MongoDB React Dashboard',
+    description: 'Building real-time analytics dashboards with MongoDB backend and React frontend for flexible schema data.',
+    category: 'Backend Integration'
+  },
+  {
+    slug: 'react-hook-form',
+    title: 'React Hook Form',
+    description: 'Performant form library using uncontrolled components for complex validation scenarios and multi-step workflows.',
+    category: 'Forms & Validation'
+  },
+  {
+    slug: 'formik-multistep-forms',
+    title: 'Formik Multi-Step Forms',
+    description: 'Declarative form library for building complex multi-step wizards with Yup validation in enterprise applications.',
+    category: 'Forms & Validation'
+  },
+  {
+    slug: 'docker-github-actions-cicd',
+    title: 'Docker + GitHub Actions CI/CD',
+    description: 'Automated deployment pipelines using Docker containerization and GitHub Actions for continuous integration and delivery.',
+    category: 'DevOps'
+  },
+  {
+    slug: 'playwright-testing',
+    title: 'Playwright Testing',
+    description: 'End-to-end testing framework for React applications with multi-browser support, auto-wait, and quality gates.',
+    category: 'Testing & Quality'
+  },
+  {
+    slug: 'enterprise-portal-architecture',
+    title: 'Enterprise Portal Architecture',
+    description: 'System design patterns for large-scale React applications including scale, security, maintainability, and team collaboration.',
+    category: 'Architecture'
+  }
+];
+
+const categories = Array.from(new Set(vocabularyTerms.map(t => t.category)));
+---
+
+<BaseLayout
+  title="Technical Vocabulary | Enterprise React Development Terms"
+  description="Comprehensive glossary of enterprise React development terms, technologies, and patterns used in internal portal development for O2, TESCO, MONETA Auto, and more."
+>
+  <article class="mx-auto max-w-5xl space-y-8">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href="/" class="hover:text-accent">Home</a> → <span class="text-slate-200">Vocabulary</span>
+    </nav>
+
+    <header class="space-y-4">
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">Technical Vocabulary</h1>
+      <p class="text-xl text-slate-200">
+        Comprehensive guide to enterprise React development terms, technologies, and patterns I use daily in internal portal development for major Czech corporations.
+      </p>
+    </header>
+
+    <div class="rounded-2xl border border-accent/30 bg-accent/10 p-6">
+      <p class="text-lg text-slate-100">
+        This vocabulary covers the technologies, methodologies, and concepts I've applied across 7 enterprise portals for O2 Czech Republic, TESCO Stores CZ, MONETA Auto, České dráhy, and JABLOTRON GROUP. Each term includes real-world implementation examples from these projects.
+      </p>
+    </div>
+
+    {categories.map((category) => (
+      <section class="space-y-4">
+        <h2 class="text-2xl font-semibold text-white">{category}</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {vocabularyTerms
+            .filter((term) => term.category === category)
+            .map((term) => (
+              <a
+                href={`/vocabulary/${term.slug}`}
+                class="block rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-accent/30 hover:bg-white/10"
+              >
+                <h3 class="text-lg font-semibold text-accent">{term.title}</h3>
+                <p class="mt-2 text-sm text-slate-300">{term.description}</p>
+                <span class="mt-3 inline-block text-sm font-semibold text-accent">
+                  Learn more →
+                </span>
+              </a>
+            ))}
+        </div>
+      </section>
+    ))}
+
+    <section class="rounded-2xl border border-accent/30 bg-accent/5 p-6">
+      <h2 class="text-2xl font-semibold text-white">How I Use These Technologies</h2>
+      <div class="mt-4 space-y-4 text-slate-200">
+        <p>
+          Over 8+ years of enterprise React development, I've mastered these technologies through real-world application:
+        </p>
+        <ul class="list-disc space-y-2 pl-6">
+          <li><strong>O2 Czech Republic:</strong> React, TypeScript, Redux, Zustand, Material UI, MongoDB, Docker, Playwright</li>
+          <li><strong>TESCO Stores CZ:</strong> React, TypeScript, Redux, Formik, Material UI, Java REST, PostgreSQL</li>
+          <li><strong>MONETA Auto:</strong> Next.js, React Hook Form, Redux, Styled Components, Tailwind CSS</li>
+          <li><strong>JABLOTRON GROUP:</strong> Gatsby, GraphQL, TypeScript, Material UI, Jest</li>
+        </ul>
+        <p class="pt-4">
+          Each term in this vocabulary represents hands-on experience building internal portals that serve hundreds to thousands of users daily across banking, retail, and telecommunications sectors in Czech Republic.
+        </p>
+      </div>
+    </section>
+
+    <section class="rounded-2xl border border-accent/30 bg-accent/5 p-6 text-center">
+      <h2 class="text-2xl font-semibold text-white">Need Enterprise React Expertise?</h2>
+      <p class="mt-3 text-slate-200">
+        I bring 8+ years of hands-on experience with these technologies to your project. Let's discuss how I can help build your internal portal or enterprise application.
+      </p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-4 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink transition hover:bg-accentMuted">
+        Contact me
+      </a>
+    </section>
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Enterprise React Development Vocabulary",
+    "description": "Technical glossary of enterprise React development terms and technologies",
+    "numberOfItems": vocabularyTerms.length,
+    "itemListElement": vocabularyTerms.map((term, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": term.title,
+      "description": term.description,
+      "url": `https://mdolnicek.eu/vocabulary/${term.slug}`
+    }))
+  })}></script>
+</BaseLayout>
