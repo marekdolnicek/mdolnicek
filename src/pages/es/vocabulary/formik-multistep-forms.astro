@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Formik Vícekrokové Formuláře pro Enterprise React | Průvodce Validací"
+  description="Implementace Formik vícekrokových formulářů s Yup validací z portálu TESCO Stores CZ operations."
+>
+  <div class="mx-auto flex max-w-6xl flex-col gap-12">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href="/es/" class="transition hover:text-accent">Inicio</a>
+      <span class="mx-2">→</span>
+      <a href="/es/vocabulary" class="transition hover:text-accent">Vocabulario</a>
+      <span class="mx-2">→</span>
+      <span class="text-slate-200">Formik Vícekrokové Formuláře</span>
+    </nav>
+
+    <section class="space-y-4">
+      <p class="eyebrow">Formuláře a Validace</p>
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">Formik Vícekrokové Formuláře</h1>
+      <p class="text-xl text-slate-300">Složité průvodce workflow s Yup validací</p>
+    </section>
+
+    <section class="rounded-[32px] border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 shadow-card">
+      <p class="text-lg text-slate-100">
+        <strong class="text-white">Definición:</strong> Formik je deklarativní formulářová knihovna pro React umožňující složité vícekrokové průvodce s Yup schema validací, ideální pro podniková workflow vyžadující postupný sběr dat.
+      </p>
+    </section>
+
+    <section class="surface-card space-y-6">
+      <div>
+        <h2 class="text-2xl font-semibold text-white">Vícekrokové Vzory</h2>
+      </div>
+      <ul class="space-y-3 text-slate-200">
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Navigace průvodce:</strong> Indikátory průběhu a validace kroků</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Validace pro každý krok:</strong> Yup schémata zajišťují kvalitu dat</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Persistence stavu:</strong> Uložení průběhu mezi sessions</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Podmíněné kroky:</strong> Dynamická workflow podle vstupu uživatele</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="surface-card space-y-6">
+      <div>
+        <p class="eyebrow text-accent">Případová Studie</p>
+        <h2 class="mt-2 text-2xl font-semibold text-white">Reálná Implementace: TESCO</h2>
+      </div>
+      <p class="text-lg text-slate-200">
+        <strong class="text-white">TESCO operations portal</strong> používá Formik pro složité formuláře plánování kampaní s vícekrokovými workflow, podmíněnou validací a integrací Material UI.
+      </p>
+    </section>
+
+    <section class="space-y-6">
+      <h3 class="text-2xl font-semibold text-white">Související Vocabulario</h3>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/es/vocabulary/react-hook-form" class="grid-panel">
+          <h4 class="font-semibold text-accent">React Hook Form</h4>
+          <p class="mt-2 text-sm text-slate-300">Alternativní výkonná formulářová knihovna</p>
+        </a>
+        <a href="/es/vocabulary/material-ui-design-system" class="grid-panel">
+          <h4 class="font-semibold text-accent">Material UI Design Systém</h4>
+          <p class="mt-2 text-sm text-slate-300">UI komponenty pro formuláře</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="rounded-[32px] border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 text-center shadow-card">
+      <h2 class="text-2xl font-semibold text-white">Potřebujete Složité Formuláře?</h2>
+      <p class="mt-3 text-lg text-slate-200">Vytvářím vícekrokové formuláře s Formik a React Hook Form pro podniková workflow.</p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-6 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink shadow-card transition hover:bg-accentMuted">Kontaktujte mě</a>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navigation from '../../../components/react/Navigation.tsx';
+import LanguageSwitcher from '../../../components/LanguageSwitcher.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+
+// Map technology names to vocabulary page slugs
+const techSlugMap: Record<string, string> = {
+  'React': 'react-typescript',
+  'TypeScript': 'react-typescript',
+  'Redux': 'redux-state-management',
+  'Zustand': 'zustand-state-management',
+  'Material UI': 'material-ui-design-system',
+  'MongoDB': 'mongodb-react-dashboard',
+  'Docker': 'docker-github-actions-cicd',
+  'Playwright': 'playwright-testing',
+  'Next.js': 'nextjs-enterprise',
+  'React Hook Form': 'react-hook-form',
+  'Formik': 'formik-multistep-forms',
+  'PostgreSQL': 'postgresql-react',
+  'GraphQL': 'graphql-integration',
+  'Gatsby': 'gatsby-graphql'
+};
+---
+
+<style>
+  .keyword-highlight {
+    background: linear-gradient(180deg, transparent 60%, rgba(var(--accent-rgb), 0.2) 60%);
+    font-weight: 500;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s;
+  }
+  .keyword-highlight:hover {
+    background: linear-gradient(180deg, transparent 50%, rgba(var(--accent-rgb), 0.35) 50%);
+  }
+</style>
+
+<BaseLayout
+  title="Projekty | Enterprise React portály a aplikace"
+  description="Portfolio enterprise React aplikací a interních portálů postavených pro O2 Czech Republic, TESCO Stores CZ, MONETA Auto, České dráhy a JABLOTRON GROUP."
+>
+  <Navigation slot="navigation" client:load currentPath={Astro.url.pathname} />
+  <LanguageSwitcher slot="language-switcher" />
+
+  <article class="mx-auto max-w-5xl space-y-8">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href="/cs" class="hover:text-accent">Domů</a> → <span class="text-slate-200">Projekty</span>
+    </nav>
+
+    <header class="space-y-4">
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">Enterprise projekty</h1>
+      <p class="text-xl text-slate-200">
+        Ukázka React aplikací a enterprise portálů postavených pro velké české korporace v průběhu poslední dekády.
+      </p>
+    </header>
+
+    <div class="rounded-2xl border border-accent/30 bg-accent/10 p-6">
+      <p class="text-lg text-slate-100">
+        Každý projekt představuje měsíce vývojové práce, obsluhuje stovky až tisíce uživatelů denně. Tyto aplikace jsem postavil pomocí Reactu, TypeScriptu a moderních enterprise technologií s důrazem na vysoký výkon, přístupnost a kvalitu kódu.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {projects.map((project) => (
+        <article class="grid-panel flex flex-col gap-4">
+          <div>
+            <p class="text-sm uppercase tracking-[0.25em] text-slate-400">{project.data.role}</p>
+            <h3 class="mt-2 text-2xl font-semibold text-white">{project.data.title}</h3>
+            <p class="mt-2 text-slate-200">{project.data.summary}</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            {project.data.stack.map((tech) => {
+              const slug = techSlugMap[tech];
+              return slug ? (
+                <a href={`/cs/vocabulary/${slug}`} class="pill keyword-highlight">{tech}</a>
+              ) : (
+                <span class="pill">{tech}</span>
+              );
+            })}
+          </div>
+          {project.data.link && (
+            <a class="text-sm font-semibold text-accent underline-offset-4 hover:underline" href={project.data.link}>
+              Navštívit projekt →
+            </a>
+          )}
+        </article>
+      ))}
+    </div>
+
+    <section class="rounded-2xl border border-accent/30 bg-accent/5 p-6">
+      <h2 class="text-2xl font-semibold text-white">Technologie a vzory</h2>
+      <div class="mt-4 space-y-4 text-slate-200">
+        <p>
+          Napříč těmito projekty jsem konzistentně dodával enterprise řešení pomocí:
+        </p>
+        <ul class="list-disc space-y-2 pl-6">
+          <li><strong>Frontend:</strong> React, TypeScript, Next.js, Gatsby, Material UI, Tailwind CSS, Styled Components</li>
+          <li><strong>State Management:</strong> Redux, Zustand, React Query, Context API</li>
+          <li><strong>Formuláře a validace:</strong> Formik, React Hook Form, Yup</li>
+          <li><strong>Backend integrace:</strong> REST APIs, GraphQL, Java, PHP, Node.js</li>
+          <li><strong>Databáze:</strong> PostgreSQL, MongoDB, MySQL</li>
+          <li><strong>DevOps a testování:</strong> Docker, GitHub Actions, Playwright, Jest, Cypress</li>
+        </ul>
+        <p class="pt-4">
+          Každý projekt následuje enterprise architektonické vzory s důrazem na udržitelnost, škálovatelnost, bezpečnost a týmovou spolupráci.
+        </p>
+      </div>
+    </section>
+
+    <section class="rounded-2xl border border-accent/30 bg-accent/5 p-6 text-center">
+      <h2 class="text-2xl font-semibold text-white">Začněte váš další Enterprise projekt</h2>
+      <p class="mt-3 text-slate-200">
+        Přináším 8+ let zkušeností s enterprise React vývojem pro budování škálovatelných interních portálů a kritických aplikací. Promluvme si o vašem projektu.
+      </p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-4 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink transition hover:bg-accentMuted">
+        Kontaktujte mě
+      </a>
+    </section>
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Enterprise React projekty od Marka Dolníčka",
+    "description": "Portfolio enterprise React aplikací a interních portálů",
+    "numberOfItems": projects.length,
+    "itemListElement": projects.map((project, index) => ({
+      "@type": "CreativeWork",
+      "position": index + 1,
+      "name": project.data.title,
+      "description": project.data.summary,
+      "author": {
+        "@type": "Person",
+        "name": "Marek Dolníček"
+      }
+    }))
+  })}></script>
+</BaseLayout>

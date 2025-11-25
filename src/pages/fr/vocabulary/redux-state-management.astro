@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Redux Správa Stavu pro Enterprise React Aplikace | Marek Dolníček"
+  description="Redux vzory správy stavu pro podnikové aplikace. Poznejte kdy použít Redux vs. Zustand se skutečnými příklady z interních portálů O2 a TESCO."
+>
+  <article class="mx-auto max-w-4xl space-y-8">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href="/fr/" class="hover:text-accent">Accueil</a> → <a href="/fr/vocabulary" class="hover:text-accent">Vocabulaire</a> → <span class="text-slate-200">Redux Správa Stavu</span>
+    </nav>
+
+    <header class="space-y-4">
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">Redux Správa Stavu</h1>
+    </header>
+
+    <div class="rounded-2xl border border-accent/30 bg-accent/10 p-6">
+      <p class="text-lg text-slate-100">
+        <strong class="text-white">Définition:</strong> Redux je předvídatelná knihovna pro správu stavu JavaScript aplikací, která centralizuje stav aplikace do jediného úložiště, používá čisté reducer funkce ke zpracování aktualizací stavu a poskytuje možnosti time-travel debuggingu—zvláště cenné pro složité podnikové React aplikace s více datovými toky.
+      </p>
+    </div>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Kdy Použít Redux</h2>
+      <div class="space-y-4 text-slate-200">
+        <p>
+          Redux vyniká v podnikových aplikacích se složitými požadavky na stav. Ne každá React aplikace potřebuje Redux—pro jednoduché projekty stačí React Context nebo lokální stav. Ale při vytváření <a href="/fr/vocabulary/internal-portal-development" class="text-accent hover:underline">interních portálů</a> obsluhujících stovky uživatelů se složitou business logikou, strukturovaný přístup Reduxu zabraňuje chaosu.
+        </p>
+        <p><strong>Použijte Redux když máte:</strong></p>
+        <ul class="list-disc space-y-2 pl-6">
+          <li>Globální stav sdílený napříč 10+ komponentami (autentizace uživatele, oprávnění, nastavení workspace)</li>
+          <li>Složité stavové transformace vyžadující více kroků (vícekrokové workflow, stavové automaty ticketů)</li>
+          <li>Potřebu time-travel debuggingu během vývoje</li>
+          <li>Týmovou spolupráci vyžadující předvídatelné stavové vzory</li>
+          <li>Integraci s middleware pro async operace, logování nebo analytiku</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Redux vs Alternativy</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-white/10">
+              <th class="p-3 text-left text-white">Vlastnost</th>
+              <th class="p-3 text-left text-white">Redux</th>
+              <th class="p-3 text-left text-white">Zustand</th>
+              <th class="p-3 text-left text-white">React Context</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-300">
+            <tr class="border-b border-white/5">
+              <td class="p-3">Boilerplate</td>
+              <td class="p-3 text-yellow-400">Více</td>
+              <td class="p-3 text-green-400">Minimální</td>
+              <td class="p-3 text-green-400">Žádný</td>
+            </tr>
+            <tr class="border-b border-white/5">
+              <td class="p-3">DevTools</td>
+              <td class="p-3 text-green-400">Vynikající</td>
+              <td class="p-3 text-green-400">Dobré</td>
+              <td class="p-3 text-yellow-400">Omezené</td>
+            </tr>
+            <tr class="border-b border-white/5">
+              <td class="p-3">Výkon</td>
+              <td class="p-3 text-green-400">Optimalizovaný</td>
+              <td class="p-3 text-green-400">Velmi rychlý</td>
+              <td class="p-3 text-yellow-400">Problémy s re-renderem</td>
+            </tr>
+            <tr class="border-b border-white/5">
+              <td class="p-3">Křivka Učení</td>
+              <td class="p-3 text-yellow-400">Strmá</td>
+              <td class="p-3 text-green-400">Mírná</td>
+              <td class="p-3 text-green-400">Snadná</td>
+            </tr>
+            <tr class="border-b border-white/5">
+              <td class="p-3">Nejlepší Pro</td>
+              <td class="p-3">Velké enterprise aplikace</td>
+              <td class="p-3">Střední aplikace</td>
+              <td class="p-3">Jednoduché sdílení stavu</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="pt-4 text-slate-200">
+        Pro <strong>O2 Service Workbench</strong> jsem použil obě: Redux pro globální app stav (auth, oprávnění, aktivní workspace) + <a href="/fr/vocabulary/zustand-state-management" class="text-accent hover:underline">Zustand</a> pro feature-specifický stav (filtry ticketů, koncepty formulářů). Tento hybridní přístup vyvážil strukturu s flexibilitou.
+      </p>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Enterprise Vzory s Redux Toolkit</h2>
+      <div class="space-y-4 text-slate-200">
+        <p>
+          Moderní Redux vývoj používá <strong>Redux Toolkit (RTK)</strong>, který redukuje boilerplate o 60% ve srovnání s klasickým Reduxem. RTK zahrnuje createSlice, configureStore a createAsyncThunk utility.
+        </p>
+        <div class="rounded-xl bg-slate-950 p-4 text-sm">
+          <code class="text-slate-300">
+            import &#123; createSlice, PayloadAction &#125; from '@reduxjs/toolkit';<br/><br/>
+            interface TicketState &#123;<br/>
+            &nbsp;&nbsp;tickets: Ticket[];<br/>
+            &nbsp;&nbsp;filter: TicketFilter;<br/>
+            &#125;<br/><br/>
+            const ticketSlice = createSlice(&#123;<br/>
+            &nbsp;&nbsp;name: 'tickets',<br/>
+            &nbsp;&nbsp;initialState: &#123; tickets: [], filter: 'all' &#125; as TicketState,<br/>
+            &nbsp;&nbsp;reducers: &#123;<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;addTicket: (state, action: PayloadAction&lt;Ticket&gt;) => &#123;<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state.tickets.push(action.payload);<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&#125;,<br/>
+            &nbsp;&nbsp;&#125;,<br/>
+            &#125;);
+          </code>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Reálná Implementace: O2 Czech Republic</h2>
+      <div class="space-y-4 text-slate-200">
+        <p>
+          O2 Service Workbench spravuje složité ticketové workflow pro 200+ podpůrných agentů. Redux zpracovává:
+        </p>
+        <ul class="list-disc space-y-2 pl-6">
+          <li><strong>Autentizační stav:</strong> Profil uživatele, oprávnění, session tokeny</li>
+          <li><strong>Konfigurace workspace:</strong> Aktivní zobrazení, preference sloupců, nastavení notifikací</li>
+          <li><strong>Životní cyklus ticketu:</strong> Nový, v průběhu, eskalovaný, vyřešený stavy s validací přechodů</li>
+          <li><strong>Real-time aktualizace:</strong> Redux middleware poslouchá WebSocket události, aktualizuje stav automaticky</li>
+        </ul>
+        <p>
+          Redux DevTools umožnily debugging stavových přechodů během eskalací ticketů, odchytily 12+ edge cases před produkčním nasazením.
+        </p>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Osvědčené Postupy</h2>
+      <ol class="list-decimal space-y-3 pl-6 text-slate-200">
+        <li><strong>Normalizujte tvar stavu:</strong> Ukládejte entity podle ID v objektech, ne v polích. Zabraňuje duplikátním datům a umožňuje O(1) vyhledávání.</li>
+        <li><strong>Používejte Redux Toolkit:</strong> createSlice, createAsyncThunk a configureStore redukují boilerplate a vynucují osvědčené postupy.</li>
+        <li><strong>Memoizace selectorů:</strong> Použijte reselect knihovnu k memoizaci výpočtů odvozeného stavu, zabráníte zbytečným re-renderům.</li>
+        <li><strong>TypeScript všude:</strong> Striktně typujte akce, reducery a selektory pro compile-time bezpečnost.</li>
+        <li><strong>Middleware střídmě:</strong> Redux Thunk nebo Redux Saga pro async logiku, ale nepřekonávejte—React Query zpracovává většinu API stavu lépe.</li>
+        <li><strong>Rozdělte reducery logicky:</strong> Jeden slice na feature doménu (tickets, users, settings), ne jeden obří reducer.</li>
+      </ol>
+    </section>
+
+    <section class="space-y-4">
+      <h3 class="text-xl font-semibold text-white">Související Vocabulaire</h3>
+      <ul class="grid gap-3 sm:grid-cols-2">
+        <li><a href="/fr/vocabulary/zustand-state-management" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">Zustand Správa Stavu</a></li>
+        <li><a href="/fr/vocabulary/react-typescript" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">React TypeScript</a></li>
+        <li><a href="/fr/vocabulary/enterprise-react-developer" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">Enterprise React Developer</a></li>
+      </ul>
+    </section>
+
+    <section class="rounded-2xl border border-accent/30 bg-accent/5 p-6 text-center">
+      <h2 class="text-2xl font-semibold text-white">Potřebujete Expertízu v Redux Architektuře?</h2>
+      <p class="mt-3 text-slate-200">Implementoval jsem Redux správu stavu pro 5+ podnikových portálů obsluhujících tisíce denních uživatelů.</p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-4 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink transition hover:bg-accentMuted">Promluvme si o vaší správě stavu</a>
+    </section>
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Redux Správa Stavu pro Enterprise React Aplikace",
+    "author": {
+      "@type": "Person",
+      "name": "Marek Dolníček",
+      "url": "https://mdolnicek.eu"
+    },
+    "datePublished": "2025-11-23",
+    "description": "Redux vzory správy stavu pro podnikové aplikace se skutečnými příklady z interních portálů O2 a TESCO.",
+    "mainEntityOfPage": "https://mdolnicek.eu/fr/vocabulary/redux-state-management"
+  })}></script>
+</BaseLayout>

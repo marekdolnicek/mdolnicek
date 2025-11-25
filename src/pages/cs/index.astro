@@ -1,24 +1,38 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import '../styles/global.css';
-import Navigation from '../components/react/Navigation.tsx';
-import LanguageSwitcher from '../components/LanguageSwitcher.astro';
-import ProjectTimeline from '../components/react/ProjectTimeline.tsx';
-import AIPlayground from '../components/react/AIPlayground.tsx';
-import OpportunityForm from '../components/react/OpportunityForm.tsx';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/global.css';
+import Navigation from '../../components/react/Navigation.tsx';
+import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
+import ProjectTimeline from '../../components/react/ProjectTimeline.tsx';
+import AIPlayground from '../../components/react/AIPlayground.tsx';
+import OpportunityForm from '../../components/react/OpportunityForm.tsx';
 import {
-  hero,
-  highlightStats,
   skillClusters,
   timelineEntries,
   aiIdeas,
   contactLinks
-} from '../data/profile';
+} from '../../data/profile';
 import { Image } from 'astro:assets';
-import portrait from '../assets/profilovka_md.png';
+import portrait from '../../assets/profilovka_md.png';
 import { getCollection } from 'astro:content';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+
+// Czech content
+const hero = {
+  eyebrow: 'Frontend vývojář • React & TypeScript',
+  title: 'Marek Dolníček',
+  subtitle: 'Enterprise React vývojář se sídlem v Praze.',
+  body: 'Za poslední desetiletí jsem dodal interní portály pro O2 Czech Republic, TESCO Stores CZ, MONETA Auto, České dráhy, JABLOTRON GROUP a další české značky. Ovládám frontend v Reactu a TypeScriptu, napojuji ho na Java nebo PHP API a udržuji Material UI a vlastní design systémy štíhlé a výkonné, přičemž se neustále učím - od orchestrace AI agentů až po experimentování s DevOps praktikami.',
+  primaryCta: { label: 'Email marekdolnicek@gmail.com', href: 'mailto:marekdolnicek@gmail.com' },
+  secondaryCta: { label: 'Zobrazit zkušenosti', href: '#timeline' }
+};
+
+const highlightStats = [
+  { label: 'Let ve frontendu', value: '8+' },
+  { label: 'Dodaných enterprise portálů', value: '7' },
+  { label: 'Freelancer od roku', value: '2012' }
+];
 
 // Map technology names to vocabulary page slugs
 const techSlugMap: Record<string, string> = {
@@ -52,7 +66,10 @@ const techSlugMap: Record<string, string> = {
   }
 </style>
 
-<BaseLayout>
+<BaseLayout
+  title="Marek Dolníček — React & TypeScript vývojář"
+  description="Enterprise React vývojář budující škálovatelné interní portály a kritické aplikace s TypeScriptem, Material UI a moderními webovými technologiemi."
+>
   <Navigation slot="navigation" client:load currentPath={Astro.url.pathname} />
   <LanguageSwitcher slot="language-switcher" />
 
@@ -76,20 +93,20 @@ const techSlugMap: Record<string, string> = {
         <div class="absolute inset-3 rounded-[28px] bg-gradient-to-b from-accent/30 to-transparent blur-3xl" aria-hidden="true"></div>
         <Image
           src={portrait}
-          alt="Portrait of Marek Dolníček"
+          alt="Portrét Marka Dolníčka"
           class="relative z-10 h-full w-full rounded-[24px] object-cover"
           width={360}
           height={450}
           loading="lazy"
         />
         <figcaption class="mt-4 text-sm text-slate-400">
-          Marek Dolníček — Czech frontend developer focused on enterprise portals.
+          Marek Dolníček — český frontend vývojář zaměřený na enterprise portály.
         </figcaption>
       </figure>
     </div>
     <div class="mt-8 grid gap-4 sm:grid-cols-3">
       {highlightStats.map((stat) => (
-        <div class="surface-card" key={stat.label}>
+        <div class="surface-card">
           <p class="text-3xl font-semibold text-accent">{stat.value}</p>
           <p class="text-sm uppercase tracking-[0.25em] text-slate-400">{stat.label}</p>
         </div>
@@ -100,11 +117,11 @@ const techSlugMap: Record<string, string> = {
   <section class="grid gap-6 lg:grid-cols-[2fr_1fr]">
     <div class="surface-card space-y-6">
       <div>
-        <p class="eyebrow">Enterprise React delivery</p>
-        <h2 class="text-3xl font-semibold text-white">Systems used daily by Czech teams</h2>
+        <p class="eyebrow">Enterprise React dodávky</p>
+        <h2 class="text-3xl font-semibold text-white">Systémy používané denně českými týmy</h2>
       </div>
       <p class="text-lg text-slate-200">
-        I ship maintainable <a href="/vocabulary/react-typescript" class="keyword-highlight">React and TypeScript</a> apps for banks, rail operators, and retailers. Data flows from Java, PHP, or <a href="/vocabulary/graphql-integration" class="keyword-highlight">GraphQL</a> APIs into accessible <a href="/vocabulary/material-ui-design-system" class="keyword-highlight">Material UI</a> and CSS systems that keep store teams productive, while ongoing experiments with AI agents and <a href="/vocabulary/docker-github-actions-cicd" class="keyword-highlight">CI/CD</a> routines keep delivery improving every sprint.
+        Dodávám udržovatelné <a href="/cs/vocabulary/react-typescript" class="keyword-highlight">React a TypeScript</a> aplikace pro banky, železniční operátory a maloobchodníky. Data proudí z Java, PHP nebo <a href="/cs/vocabulary/graphql-integration" class="keyword-highlight">GraphQL</a> API do přístupných <a href="/cs/vocabulary/material-ui-design-system" class="keyword-highlight">Material UI</a> a CSS systémů, které udržují týmy v obchodech produktivní, zatímco neustálé experimenty s AI agenty a <a href="/cs/vocabulary/docker-github-actions-cicd" class="keyword-highlight">CI/CD</a> rutinami zlepšují dodávky každý sprint.
       </p>
       <ul class="grid gap-4 sm:grid-cols-3">
         {skillClusters.map((cluster) => (
@@ -113,13 +130,13 @@ const techSlugMap: Record<string, string> = {
             <ul class="mt-2 space-y-1 text-sm text-slate-300">
               {cluster.bullets.map((item) => (
                 <li set:html={item
-                  .replace(/React, Next\.js & Gatsby/g, '<a href="/vocabulary/react-typescript" class="keyword-highlight">React</a>, <a href="/vocabulary/nextjs-enterprise" class="keyword-highlight">Next.js</a> & Gatsby')
-                  .replace(/Redux/g, '<a href="/vocabulary/redux-state-management" class="keyword-highlight">Redux</a>')
-                  .replace(/Formik/g, '<a href="/vocabulary/formik-multistep-forms" class="keyword-highlight">Formik</a>')
-                  .replace(/React Hook Form/g, '<a href="/vocabulary/react-hook-form" class="keyword-highlight">React Hook Form</a>')
-                  .replace(/Material UI/g, '<a href="/vocabulary/material-ui-design-system" class="keyword-highlight">Material UI</a>')
-                  .replace(/GraphQL/g, '<a href="/vocabulary/graphql-integration" class="keyword-highlight">GraphQL</a>')
-                  .replace(/PostgreSQL/g, '<a href="/vocabulary/postgresql-react" class="keyword-highlight">PostgreSQL</a>')
+                  .replace(/React, Next\.js & Gatsby/g, '<a href="/cs/vocabulary/react-typescript" class="keyword-highlight">React</a>, <a href="/cs/vocabulary/nextjs-enterprise" class="keyword-highlight">Next.js</a> & Gatsby')
+                  .replace(/Redux/g, '<a href="/cs/vocabulary/redux-state-management" class="keyword-highlight">Redux</a>')
+                  .replace(/Formik/g, '<a href="/cs/vocabulary/formik-multistep-forms" class="keyword-highlight">Formik</a>')
+                  .replace(/React Hook Form/g, '<a href="/cs/vocabulary/react-hook-form" class="keyword-highlight">React Hook Form</a>')
+                  .replace(/Material UI/g, '<a href="/cs/vocabulary/material-ui-design-system" class="keyword-highlight">Material UI</a>')
+                  .replace(/GraphQL/g, '<a href="/cs/vocabulary/graphql-integration" class="keyword-highlight">GraphQL</a>')
+                  .replace(/PostgreSQL/g, '<a href="/cs/vocabulary/postgresql-react" class="keyword-highlight">PostgreSQL</a>')
                 }></li>
               ))}
             </ul>
@@ -132,8 +149,8 @@ const techSlugMap: Record<string, string> = {
 
   <section id="projects" class="space-y-6">
     <div class="space-y-4">
-      <p class="eyebrow">Selected projects</p>
-      <h2 class="text-3xl font-semibold text-white">Enterprise React applications built with precision</h2>
+      <p class="eyebrow">Vybrané projekty</p>
+      <h2 class="text-3xl font-semibold text-white">React aplikace s Astro disciplínou</h2>
     </div>
     <div class="grid gap-6 md:grid-cols-2">
       {projects.map((project) => (
@@ -147,7 +164,7 @@ const techSlugMap: Record<string, string> = {
             {project.data.stack.map((tech) => {
               const slug = techSlugMap[tech];
               return slug ? (
-                <a href={`/vocabulary/${slug}`} class="pill keyword-highlight">{tech}</a>
+                <a href={`/cs/vocabulary/${slug}`} class="pill keyword-highlight">{tech}</a>
               ) : (
                 <span class="pill">{tech}</span>
               );
@@ -155,23 +172,18 @@ const techSlugMap: Record<string, string> = {
           </div>
           {project.data.link && (
             <a class="text-sm font-semibold text-accent underline underline-offset-4 transition hover:text-accentMuted" href={project.data.link}>
-              Visit project →
+              Navštívit projekt →
             </a>
           )}
         </article>
       ))}
     </div>
-    <div class="flex justify-center pt-4">
-      <a href="/projects" class="text-lg font-semibold text-accent underline underline-offset-4 transition hover:text-accentMuted">
-        View all projects →
-      </a>
-    </div>
   </section>
 
   <section id="timeline" class="space-y-4">
-    <div class="space-y-4 my-4">
-      <p class="eyebrow">Timeline</p>
-      <h2 class="text-3xl font-semibold text-white">Career milestones & key clients</h2>
+    <div class="space-y-4">
+      <p class="eyebrow">Časová osa</p>
+      <h2 class="text-3xl font-semibold text-white">Kariérní milníky & klíčoví klienti</h2>
     </div>
     <ProjectTimeline client:visible entries={timelineEntries} />
   </section>
@@ -179,10 +191,10 @@ const techSlugMap: Record<string, string> = {
   <section class="grid gap-6 lg:grid-cols-2">
     <OpportunityForm client:visible />
     <div class="surface-card space-y-4">
-      <p class="eyebrow text-accent">Signals</p>
-      <h2 class="text-3xl font-semibold text-white">Let’s pair on your React surface</h2>
+      <p class="eyebrow text-accent">Kontakt</p>
+      <h2 class="text-3xl font-semibold text-white">Pojďme spolupracovat na vašem React projektu</h2>
       <p class="text-slate-200">
-        Async briefs, live pairing, or embedded consulting. I plug in quickly, leave documentation behind, and keep performance budgets measurable.
+        Asynchronní konzultace, živé párové programování nebo embedded consulting. Zapojím se rychle, zanechám dokumentaci a udržím měřitelné výkonnostní rozpočty.
       </p>
       <ul class="space-y-2 text-sm text-slate-200">
         {contactLinks.map((link) => (

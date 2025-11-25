@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Next.js pro Podnikové Aplikace | React Framework Průvodce"
+  description="Next.js vývoj podnikových aplikací pro bankovnictví a finance. Reálná implementace z MONETA Auto onboarding suite."
+>
+  <div class="mx-auto flex max-w-6xl flex-col gap-12">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href="/fr/" class="transition hover:text-accent">Accueil</a>
+      <span class="mx-2">→</span>
+      <a href="/fr/vocabulary" class="transition hover:text-accent">Vocabulaire</a>
+      <span class="mx-2">→</span>
+      <span class="text-slate-200">Next.js Enterprise</span>
+    </nav>
+
+    <section class="space-y-4">
+      <p class="eyebrow">Frameworky</p>
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">Next.js pro Enterprise</h1>
+      <p class="text-xl text-slate-300">React framework s SSR, SSG a API routes</p>
+    </section>
+
+    <section class="rounded-[32px] border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 shadow-card">
+      <p class="text-lg text-slate-100">
+        <strong class="text-white">Définition:</strong> Next.js je React framework poskytující server-side rendering, statickou generaci, API routes a vestavěné optimalizace pro vytváření podnikových webových aplikací.
+      </p>
+    </section>
+
+    <section class="surface-card space-y-6">
+      <div>
+        <h2 class="text-2xl font-semibold text-white">Podnikové Případy Použití</h2>
+      </div>
+      <ul class="space-y-3 text-slate-200">
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Admin dashboardy:</strong> SSR pro rychlé první načtení</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Zákaznické portály:</strong> SEO a výkon optimalizované</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Interní nástroje:</strong> Hybridní statické a dynamické stránky</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Marketingové weby:</strong> API integrace se SSG</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="surface-card space-y-6">
+      <div>
+        <p class="eyebrow text-accent">Případová Studie</p>
+        <h2 class="mt-2 text-2xl font-semibold text-white">Reálný Projekt: MONETA Auto</h2>
+      </div>
+      <p class="text-lg text-slate-200">
+        Vytvořil jsem <strong class="text-white">MONETA Auto onboarding suite</strong> s Next.js + React Hook Form pro zpracování automobilových finančních půjček, zpracovávající složité vícekrokové validace a REST integrace.
+      </p>
+    </section>
+
+    <section class="space-y-6">
+      <h3 class="text-2xl font-semibold text-white">Související Vocabulaire</h3>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/fr/vocabulary/react-typescript" class="grid-panel">
+          <h4 class="font-semibold text-accent">React TypeScript</h4>
+          <p class="mt-2 text-sm text-slate-300">Typově bezpečný Next.js vývoj</p>
+        </a>
+        <a href="/fr/vocabulary/react-hook-form" class="grid-panel">
+          <h4 class="font-semibold text-accent">React Hook Form</h4>
+          <p class="mt-2 text-sm text-slate-300">Zpracování formulářů v MONETA Auto</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="rounded-[32px] border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 text-center shadow-card">
+      <h2 class="text-2xl font-semibold text-white">Potřebujete Next.js Vývoj?</h2>
+      <p class="mt-3 text-lg text-slate-200">Vytvořil jsem podnikové Next.js aplikace pro bankovní a finanční sektory.</p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-6 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink shadow-card transition hover:bg-accentMuted">Promluvme si</a>
+    </section>
+  </div>
+</BaseLayout>

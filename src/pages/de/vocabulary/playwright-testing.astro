@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Playwright Testování pro React Aplikace | E2E Testing Průvodce 2025"
+  description="Playwright end-to-end testování pro podnikové React aplikace s quality gates a CI/CD integrací z implementace O2."
+>
+  <div class="mx-auto flex max-w-6xl flex-col gap-12">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href="/de/" class="transition hover:text-accent">Startseite</a>
+      <span class="mx-2">→</span>
+      <a href="/de/vocabulary" class="transition hover:text-accent">Wortschatz</a>
+      <span class="mx-2">→</span>
+      <span class="text-slate-200">Playwright Testing</span>
+    </nav>
+
+    <section class="space-y-4">
+      <p class="eyebrow">Testování a Kvalita</p>
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">Playwright Testing</h1>
+      <p class="text-xl text-slate-300">Spolehlivé end-to-end testování pro React aplikace</p>
+    </section>
+
+    <section class="rounded-[32px] border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 shadow-card">
+      <p class="text-lg text-slate-100">
+        <strong class="text-white">Definition:</strong> Playwright je end-to-end testovací framework pro React aplikace s podporou více prohlížečů, auto-wait funkcí, nahráváním videa a trace viewerem pro spolehlivé automatizované testování.
+      </p>
+    </section>
+
+    <section class="surface-card space-y-6">
+      <div>
+        <h2 class="text-2xl font-semibold text-white">Výhody Playwright</h2>
+      </div>
+      <ul class="space-y-3 text-slate-200">
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Testování ve více prohlížečích:</strong> Podpora Chromium, Firefox, WebKit</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Auto-wait:</strong> Eliminuje nestabilní testy s chytrým čekáním</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Trace viewer:</strong> Debugování selhání testů s timeline a screenshoty</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Paralelní spouštění:</strong> Rychlé CI/CD pipelines</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="surface-card space-y-6">
+      <div>
+        <p class="eyebrow text-accent">Případová Studie</p>
+        <h2 class="mt-2 text-2xl font-semibold text-white">Reálná Implementace: O2 Czech Republic</h2>
+      </div>
+      <p class="text-lg text-slate-200">
+        <strong class="text-white">O2 Service Workbench</strong> používá Playwright quality gates v CI/CD, spouští 40+ E2E scénářů pokrývajících ticketové workflow, autentizaci a real-time aktualizace—odchytil 15+ regression bugů před produkcí.
+      </p>
+    </section>
+
+    <section class="space-y-6">
+      <h3 class="text-2xl font-semibold text-white">Související Wortschatz</h3>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/de/vocabulary/docker-github-actions-cicd" class="grid-panel">
+          <h4 class="font-semibold text-accent">Docker GitHub Actions CI/CD</h4>
+          <p class="mt-2 text-sm text-slate-300">Automatizované testování v deployment pipeline</p>
+        </a>
+        <a href="/de/vocabulary/react-typescript" class="grid-panel">
+          <h4 class="font-semibold text-accent">React TypeScript</h4>
+          <p class="mt-2 text-sm text-slate-300">Typově bezpečné testování komponent</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="rounded-[32px] border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 text-center shadow-card">
+      <h2 class="text-2xl font-semibold text-white">Potřebujete E2E Testing Nastavení?</h2>
+      <p class="mt-3 text-lg text-slate-200">Implementuji Playwright testovací strategie pro podnikové React aplikace.</p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-6 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink shadow-card transition hover:bg-accentMuted">Ozvěte se</a>
+    </section>
+  </div>
+</BaseLayout>

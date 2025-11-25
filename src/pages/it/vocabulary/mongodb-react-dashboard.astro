@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="MongoDB React Dashboard | Real-Time Enterprise Analytika"
+  description="Implementace MongoDB React dashboardu pro podnikovou analytiku s real-time aktualizacemi z O2 Czech Republic."
+>
+  <div class="mx-auto flex max-w-6xl flex-col gap-12">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href="/it/" class="transition hover:text-accent">Home</a>
+      <span class="mx-2">→</span>
+      <a href="/it/vocabulary" class="transition hover:text-accent">Vocabolario</a>
+      <span class="mx-2">→</span>
+      <span class="text-slate-200">MongoDB React Dashboard</span>
+    </nav>
+
+    <section class="space-y-4">
+      <p class="eyebrow">Backend Integrace</p>
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">MongoDB React Dashboard</h1>
+      <p class="text-xl text-slate-300">Real-time analytika s flexibilním schématem</p>
+    </section>
+
+    <section class="rounded-[32px] border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 shadow-card">
+      <p class="text-lg text-slate-100">
+        <strong class="text-white">Definizione:</strong> Vytváření real-time analytických dashboardů s MongoDB backendem a React frontendem pro flexibilní schémata dat, agregační pipelines a živé aktualizace.
+      </p>
+    </section>
+
+    <section class="surface-card space-y-6">
+      <div>
+        <h2 class="text-2xl font-semibold text-white">Dashboard Vzory</h2>
+      </div>
+      <ul class="space-y-3 text-slate-200">
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Metrické karty:</strong> KPI a indikátory trendů</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Real-time grafy:</strong> Vizualizace dat s živými aktualizacemi</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">Filtrování a drill-down:</strong> Interaktivní průzkum dat</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+          <span><strong class="text-white">WebSocket aktualizace:</strong> Živá synchronizace dat</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="surface-card space-y-6">
+      <div>
+        <p class="eyebrow text-accent">Případová Studie</p>
+        <h2 class="mt-2 text-2xl font-semibold text-white">Reálná Implementace: O2 Czech Republic</h2>
+      </div>
+      <p class="text-lg text-slate-200">
+        <strong class="text-white">O2 care cockpit</strong> používá MongoDB agregační pipelines pro real-time reporting servisních ticketů, eskalací zákazníků a metrik výkonu týmu pro 200+ podpůrných agentů.
+      </p>
+    </section>
+
+    <section class="space-y-6">
+      <h3 class="text-2xl font-semibold text-white">Související Vocabolario</h3>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/it/vocabulary/postgresql-react" class="grid-panel">
+          <h4 class="font-semibold text-accent">PostgreSQL React</h4>
+          <p class="mt-2 text-sm text-slate-300">Alternativa relační databáze</p>
+        </a>
+        <a href="/it/vocabulary/redux-state-management" class="grid-panel">
+          <h4 class="font-semibold text-accent">Redux Správa Stavu</h4>
+          <p class="mt-2 text-sm text-slate-300">Správa stavu dashboardu</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="rounded-[32px] border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 text-center shadow-card">
+      <h2 class="text-2xl font-semibold text-white">Potřebujete Vývoj Dashboardu?</h2>
+      <p class="mt-3 text-lg text-slate-200">Vytvářím real-time analytické dashboardy s MongoDB a React.</p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-6 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink shadow-card transition hover:bg-accentMuted">Promluvme si</a>
+    </section>
+  </div>
+</BaseLayout>

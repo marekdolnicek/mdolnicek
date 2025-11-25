@@ -1,0 +1,217 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="React TypeScript Osvědčené Postupy | Enterprise Průvodce Vývojem 2025"
+  description="Průvodce integrací React TypeScript s osvědčenými postupy pro podniky. Poznejte typování komponent, pokročilé vzory a konfiguraci z 8+ let produkční zkušenosti."
+>
+  <article class="mx-auto max-w-4xl space-y-8">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href="/it/" class="hover:text-accent">Home</a> → <a href="/it/vocabulary" class="hover:text-accent">Vocabolario</a> → <span class="text-slate-200">React TypeScript</span>
+    </nav>
+
+    <header class="space-y-4">
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">React + TypeScript Integrace</h1>
+    </header>
+
+    <div class="rounded-2xl border border-accent/30 bg-accent/10 p-6">
+      <p class="text-lg text-slate-100">
+        <strong class="text-white">Definizione:</strong> React TypeScript je praxe vytváření React aplikací pomocí TypeScript, silně typovaného supersetu JavaScriptu, který přidává statickou kontrolu typů, umožňuje včasné odhalování chyb, lepší podporu IDE a vylepšenou udržovatelnost kódu v podnikových aplikacích.
+      </p>
+    </div>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Proč TypeScript + React pro Enterprise</h2>
+      <div class="space-y-4 text-slate-200">
+        <p>
+          TypeScript transformuje React vývoj tím, že odchytává chyby v čase kompilace místo runtime. Pro podnikové projekty obsluhující tisíce uživatelů denně je tento rozdíl kritický—typ chyby odchycené během vývoje stojí minuty; stejná chyba v produkci stojí hodiny a poškozuje důvěru uživatelů.
+        </p>
+        <p>
+          Klíčové výhody pro enterprise React vývoj:
+        </p>
+        <ul class="list-disc space-y-2 pl-6">
+          <li><strong>Typová bezpečnost:</strong> Props rozhraní, typy stavů a API kontrakty zabraňují šíření neplatných dat skrz komponenty</li>
+          <li><strong>Sebevědomí při refaktoringu:</strong> Přejmenujte funkce nebo změňte struktury props napříč 100+ soubory bez strachu z rozbití produkce</li>
+          <li><strong>Developer experience:</strong> IntelliSense autocomplete, inline dokumentace a okamžitá zpětná vazba chyb v VS Code</li>
+          <li><strong>Týmová spolupráce:</strong> Explicitní rozhraní slouží jako živá dokumentace, dělají kód čitelným pro vývojáře přidávající se za 6 měsíců</li>
+          <li><strong>Podnikové požadavky:</strong> Velké korporace vyžadují TypeScript pro kritické systémy (všech 7 mých podnikových portálů používá TypeScript)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Nastavení a Konfigurace</h2>
+      <div class="space-y-4 text-slate-200">
+        <p><strong>Konfigurace TypeScript (tsconfig.json):</strong></p>
+        <div class="rounded-xl bg-slate-950 p-4 text-sm">
+          <code class="text-slate-300">
+            &#123;<br/>
+            &nbsp;&nbsp;"compilerOptions": &#123;<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;"target": "ES2020",<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;"lib": ["ES2020", "DOM", "DOM.Iterable"],<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;"jsx": "react-jsx",<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;"module": "ESNext",<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;"strict": true,<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;"esModuleInterop": true,<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;"skipLibCheck": true<br/>
+            &nbsp;&nbsp;&#125;<br/>
+            &#125;
+          </code>
+        </div>
+        <p class="pt-4">
+          <strong>Klíčová nastavení pro podnikové projekty:</strong> Zapněte <code class="rounded bg-slate-800 px-2 py-1">strict: true</code> (zahrnuje strictNullChecks, noImplicitAny, strictFunctionTypes), použijte path mapping pro čisté importy, zapněte <code class="rounded bg-slate-800 px-2 py-1">noUnusedLocals</code> a <code class="rounded bg-slate-800 px-2 py-1">noUnusedParameters</code> pro udržení čistého kódu.
+        </p>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Vzory Typování Komponent</h2>
+      <div class="space-y-4 text-slate-200">
+        <p><strong>1. Funkční Komponenty s Props:</strong></p>
+        <div class="rounded-xl bg-slate-950 p-4 text-sm">
+          <code class="text-slate-300">
+            interface ButtonProps &#123;<br/>
+            &nbsp;&nbsp;label: string;<br/>
+            &nbsp;&nbsp;onClick: () => void;<br/>
+            &nbsp;&nbsp;variant?: 'primary' | 'secondary';<br/>
+            &nbsp;&nbsp;disabled?: boolean;<br/>
+            &#125;<br/><br/>
+            const Button: React.FC&lt;ButtonProps&gt; = (&#123; label, onClick, variant = 'primary', disabled &#125;) => &#123;<br/>
+            &nbsp;&nbsp;return &lt;button onClick=&#123;onClick&#125;&gt;&#123;label&#125;&lt;/button&gt;;<br/>
+            &#125;;
+          </code>
+        </div>
+
+        <p class="pt-4"><strong>2. Vlastní Hooks s TypeScript:</strong></p>
+        <div class="rounded-xl bg-slate-950 p-4 text-sm">
+          <code class="text-slate-300">
+            function useApi&lt;T&gt;(url: string): &#123; data: T | null; loading: boolean; error: Error | null &#125; &#123;<br/>
+            &nbsp;&nbsp;const [data, setData] = useState&lt;T | null&gt;(null);<br/>
+            &nbsp;&nbsp;// ... fetch logic<br/>
+            &nbsp;&nbsp;return &#123; data, loading, error &#125;;<br/>
+            &#125;
+          </code>
+        </div>
+
+        <p class="pt-4"><strong>3. Event Handlery:</strong></p>
+        <div class="rounded-xl bg-slate-950 p-4 text-sm">
+          <code class="text-slate-300">
+            const handleChange = (event: React.ChangeEvent&lt;HTMLInputElement&gt;) => &#123;<br/>
+            &nbsp;&nbsp;console.log(event.target.value);<br/>
+            &#125;;<br/><br/>
+            const handleClick = (event: React.MouseEvent&lt;HTMLButtonElement&gt;) => &#123;<br/>
+            &nbsp;&nbsp;event.preventDefault();<br/>
+            &#125;;
+          </code>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Pokročilé Vzory</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-accent">Generické Komponenty</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Vytvářejte znovupoužitelné komponenty, které fungují s jakýmkoli datovým typem. Příklad: DataTable&lt;User&gt; vs DataTable&lt;Product&gt; s plnou typovou bezpečností pro sloupce a data řádků.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-accent">Diskriminované Unie</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Modelujte složité stavové automaty, kde různé stavy mají různé datové tvary. Využíváno extensively v O2 ticket workflows a MONETA loan stages.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-accent">Utility Typy</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Využívejte Pick, Omit, Partial, Required k odvození typů z existujících rozhraní. Redukuje duplikaci a udržuje typy DRY.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <h3 class="font-semibold text-accent">Type Guards</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Zužte union typy s vlastními type predicates. Nezbytné pro bezpečné zpracování API odpovědí a uživatelských vstupů.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Běžné Pasti a Řešení</h2>
+      <ol class="list-decimal space-y-3 pl-6 text-slate-200">
+        <li><strong>Nadměrné používání 'any':</strong> Vyhněte se type escape hatch 'any'. Použijte 'unknown' pro skutečně neznámá data, poté zužte pomocí type guards. Zapněte <code class="rounded bg-slate-800 px-2 py-1">noImplicitAny</code>.</li>
+        <li><strong>Type Assertions:</strong> Minimalizujte 'as' assertions—obcházejí kontrolu typů. Preferujte type guards a správnou inference. Používejte pouze když máte informace, které TypeScript nemá.</li>
+        <li><strong>Chybějící Typy Knihoven:</strong> Instalujte @types balíčky pro third-party knihovny. Pokud typy neexistují, deklarujte minimální rozhraní spíše než používání 'any'.</li>
+        <li><strong>Složité Generics:</strong> Udržujte generic constraints jednoduché. Pokud signatura typu vyžaduje 5 type parametrů, zvažte refaktoring komponenty.</li>
+        <li><strong>Ignorování strictNullChecks:</strong> Zapněte od prvního dne. Retrofitting null safety do velké kódové základny je bolestivé (naučeno z migrace Cool Credit lending systému).</li>
+      </ol>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Reálná Implementace: TESCO Operations Portal</h2>
+      <div class="space-y-4 text-slate-200">
+        <p>
+          TESCO Stores CZ portál používá TypeScript napříč 40+ komponentami, 15+ custom hooks a 20+ API integračními funkcemi. Strict mode odchytil 30+ potenciálních runtime chyb během refaktoringu, zabránil produkčním bugům.
+        </p>
+        <p>Klíčové TypeScript výhry:</p>
+        <ul class="list-disc space-y-2 pl-6">
+          <li>Formuláře plánování kampaní s vícekrokovou validací: TypeScript rozhraní zajišťují, že každý krok přijímá správně tvarovaná data</li>
+          <li>Integrace Java REST API: Generované TypeScript typy z OpenAPI specs garantují zarovnání frontend-backend kontraktů</li>
+          <li>Redux správa stavu: Silně typované akce a reducery zabraňují neplatným state mutacím</li>
+          <li>Přizpůsobení Material UI: Theme type augmentation poskytuje autocomplete pro custom color tokeny</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold text-white">Nástroje a IDE Nastavení</h2>
+      <div class="space-y-4 text-slate-200">
+        <p><strong>ESLint TypeScript Pravidla:</strong></p>
+        <ul class="list-disc space-y-1 pl-6">
+          <li>@typescript-eslint/no-explicit-any - zákaz používání 'any'</li>
+          <li>@typescript-eslint/strict-boolean-expressions - zabránění volných boolean kontrol</li>
+          <li>@typescript-eslint/no-unnecessary-type-assertion - odstranění redundantních castů</li>
+        </ul>
+
+        <p class="pt-4"><strong>VS Code Rozšíření:</strong></p>
+        <ul class="list-disc space-y-1 pl-6">
+          <li>TypeScript IntelliSense (vestavěné) pro autocomplete a zvýraznění chyb</li>
+          <li>Prettier pro konzistentní formátování kódu</li>
+          <li>Error Lens pro zobrazení TypeScript chyb inline</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h3 class="text-xl font-semibold text-white">Související Vocabolario</h3>
+      <ul class="grid gap-3 sm:grid-cols-2">
+        <li><a href="/it/vocabulary/enterprise-react-developer" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">Enterprise React Developer</a></li>
+        <li><a href="/it/vocabulary/material-ui-design-system" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">Material UI Design Systém</a></li>
+        <li><a href="/it/vocabulary/redux-state-management" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">Redux Správa Stavu</a></li>
+        <li><a href="/it/vocabulary/nextjs-enterprise" class="block rounded-xl border border-white/10 bg-white/5 p-3 text-accent transition hover:border-accent/30">Next.js Enterprise</a></li>
+      </ul>
+    </section>
+
+    <section class="rounded-2xl border border-accent/30 bg-accent/5 p-6 text-center">
+      <h2 class="text-2xl font-semibold text-white">Potřebujete React TypeScript Expertízu?</h2>
+      <p class="mt-3 text-slate-200">8+ let vytváření typově bezpečných React aplikací pro podnikové klienty napříč bankovnictvím, maloobchodem a telekomunikacemi.</p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-4 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink transition hover:bg-accentMuted">Promluvme si o vašem projektu</a>
+    </section>
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "React TypeScript Osvědčené Postupy | Enterprise Průvodce Vývojem",
+    "author": {
+      "@type": "Person",
+      "name": "Marek Dolníček",
+      "url": "https://mdolnicek.eu"
+    },
+    "datePublished": "2025-11-23",
+    "description": "Průvodce integrací React TypeScript s osvědčenými postupy pro podniky. Typování komponent, pokročilé vzory a konfigurace.",
+    "mainEntityOfPage": "https://mdolnicek.eu/it/vocabulary/react-typescript"
+  })}></script>
+</BaseLayout>

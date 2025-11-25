@@ -1,0 +1,189 @@
+---
+import { languages } from '../i18n/ui';
+
+const currentPath = Astro.url.pathname;
+const currentLang = Astro.currentLocale || 'en';
+
+// Language flags (emoji) and names
+const languageConfig = {
+  en: { flag: '🇬🇧', name: 'English' },
+  cs: { flag: '🇨🇿', name: 'Čeština' },
+  de: { flag: '🇩🇪', name: 'Deutsch' },
+  es: { flag: '🇪🇸', name: 'Español' },
+  it: { flag: '🇮🇹', name: 'Italiano' },
+  fr: { flag: '🇫🇷', name: 'Français' }
+};
+
+// Generate URL for each language
+function getLocalizedPath(lang: string) {
+  // Remove current language prefix if exists
+  let path = currentPath;
+  Object.keys(languages).forEach(l => {
+    if (path.startsWith(`/${l}/`)) {
+      path = path.slice(3);
+    } else if (path === `/${l}`) {
+      path = '/';
+    }
+  });
+
+  // Add new language prefix (except for default English)
+  return lang === 'en' ? path : `/${lang}${path}`;
+}
+---
+
+<div class="language-switcher">
+  <button class="language-button" id="lang-button" aria-label="Switch language" aria-haspopup="true">
+    <span class="flag">{languageConfig[currentLang as keyof typeof languageConfig].flag}</span>
+    <span class="lang-code">{currentLang.toUpperCase()}</span>
+    <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+      <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <div class="language-dropdown" id="lang-dropdown" role="menu">
+    {Object.entries(languageConfig).map(([lang, config]) => (
+      <a
+        href={getLocalizedPath(lang)}
+        class:list={['language-option', { active: lang === currentLang }]}
+        role="menuitem"
+        data-lang={lang}
+      >
+        <span class="flag">{config.flag}</span>
+        <span class="lang-name">{config.name}</span>
+        {lang === currentLang && <span class="checkmark">✓</span>}
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .language-switcher {
+    position: relative;
+  }
+
+  .language-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: rgb(226, 232, 240);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .language-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(94, 245, 198, 0.3);
+  }
+
+  .flag {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  .lang-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  .chevron {
+    transition: transform 0.2s;
+  }
+
+  .language-button[aria-expanded="true"] .chevron {
+    transform: rotate(180deg);
+  }
+
+  .language-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    min-width: 180px;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 12px 45px rgba(15, 23, 42, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s;
+    z-index: 50;
+  }
+
+  .language-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .language-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 0.875rem;
+    border-radius: 0.5rem;
+    color: rgb(226, 232, 240);
+    text-decoration: none;
+    transition: all 0.15s;
+    position: relative;
+  }
+
+  .language-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgb(94, 245, 198);
+  }
+
+  .language-option.active {
+    background: rgba(94, 245, 198, 0.1);
+    color: rgb(94, 245, 198);
+  }
+
+  .lang-name {
+    flex: 1;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .checkmark {
+    color: rgb(94, 245, 198);
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  const button = document.getElementById('lang-button');
+  const dropdown = document.getElementById('lang-dropdown');
+
+  if (button && dropdown) {
+    button.addEventListener('click', () => {
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!isExpanded));
+      dropdown.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!button.contains(e.target as Node) && !dropdown.contains(e.target as Node)) {
+        button.setAttribute('aria-expanded', 'false');
+        dropdown.classList.remove('show');
+      }
+    });
+
+    // Close dropdown when pressing Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && dropdown.classList.contains('show')) {
+        button.setAttribute('aria-expanded', 'false');
+        dropdown.classList.remove('show');
+        button.focus();
+      }
+    });
+  }
+</script>

@@ -9,6 +9,13 @@ export default defineConfig({
   site: 'https://mdolnicek.eu',
   srcDir: './src',
   output: 'static',
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'cs', 'de', 'es', 'it', 'fr'],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  },
   integrations: [
     react(),
     tailwind({ applyBaseStyles: false }),

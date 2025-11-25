@@ -7,13 +7,15 @@ interface Props {
   coverImage?: string;
 }
 
-const { title = 'Marek Dolníček — React & Astro Developer', description = 'React-focused web developer crafting fast Astro experiences with fullstack ambition and AI curiosity.', coverImage = '/social.png' } = Astro.props as Props;
+const { title = 'Marek Dolníček — React & TypeScript Developer', description = 'Enterprise React developer building scalable internal portals and mission-critical applications with TypeScript, Material UI, and modern web technologies.', coverImage = '/social.png' } = Astro.props as Props;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
@@ -24,7 +26,17 @@ const { title = 'Marek Dolníček — React & Astro Developer', description = 'R
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   </head>
-  <body class="min-h-screen px-6 pb-16 pt-10 text-base text-slate-100 sm:px-10 lg:px-16">
+  <body class="min-h-screen px-6 pb-16 pt-6 text-base text-slate-100 sm:px-10 lg:px-16">
+    <!-- Navigation Header -->
+    <div class="mx-auto flex max-w-6xl items-center justify-between pb-6">
+      <slot name="navigation">
+        <!-- Default: empty, can be filled by pages that want the navbar -->
+      </slot>
+      <slot name="language-switcher">
+        <!-- Default: empty, can be filled by pages that want the switcher -->
+      </slot>
+    </div>
+
     <main class="mx-auto flex max-w-6xl flex-col gap-12">
       <slot />
     </main>
