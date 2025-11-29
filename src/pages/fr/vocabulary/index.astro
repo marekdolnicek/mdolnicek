@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../../i18n/ui';
+
+const lang = 'fr';
+const t = useTranslations(lang);
+
+const vocabularyTerms = [
+  { slug: 'enterprise-react-developer', title: 'Développeur React entreprise', description: 'Spécialiste frontend construisant de grandes applications React critiques avec des standards de qualité enterprise.', category: 'Rôles & expertise' },
+  { slug: 'internal-portal-development', title: 'Développement de portails internes', description: 'Applications web pour les employés afin de fluidifier l’exploitation, centraliser les données et accélérer les workflows.', category: 'Services' },
+  { slug: 'material-ui-design-system', title: 'Design system Material UI', description: 'Implémentation Material Design en MUI adaptée au branding, avec accessibilité intégrée.', category: 'UI & Design' },
+  { slug: 'react-typescript', title: 'React + TypeScript', description: 'Applications React typées statiquement pour détecter les erreurs tôt et garder un code maintenable.', category: 'Technologies' },
+  { slug: 'redux-state-management', title: 'Gestion d’état Redux', description: 'Bibliothèque prédictible pour centraliser l’état dans des applications enterprise complexes.', category: 'Gestion d’état' },
+  { slug: 'zustand-state-management', title: 'Gestion d’état Zustand', description: 'Kits basés sur hooks avec très peu de boilerplate, idéal pour un état ciblé ou plus léger que Redux.', category: 'Gestion d’état' },
+  { slug: 'nextjs-enterprise', title: 'Next.js pour l’enterprise', description: 'Framework React SSR/SSG avec routes API pour des applications performantes et SEO friendly.', category: 'Frameworks' },
+  { slug: 'gatsby-graphql', title: 'Gatsby + GraphQL', description: 'Génération statique avec couche GraphQL, idéale pour la documentation et les sites riches en contenu.', category: 'Frameworks' },
+  { slug: 'graphql-integration', title: 'Intégration GraphQL', description: 'Langage de requête flexible qui renvoie exactement les données nécessaires entre frontend et API.', category: 'Intégration backend' },
+  { slug: 'postgresql-react', title: 'PostgreSQL + React', description: 'Connexion de frontends React à des bases relationnelles via REST ou GraphQL.', category: 'Intégration backend' },
+  { slug: 'mongodb-react-dashboard', title: 'Dashboard React + MongoDB', description: 'Tableaux de bord temps réel sur schéma flexible MongoDB avec interface React.', category: 'Intégration backend' },
+  { slug: 'react-hook-form', title: 'React Hook Form', description: 'Bibliothèque de formulaires performante avec composants non contrôlés et validations complexes.', category: 'Formulaires & validation' },
+  { slug: 'formik-multistep-forms', title: 'Formik formulaires multi-étapes', description: 'Création déclarative de wizards multi-étapes avec validation Yup pour les apps enterprise.', category: 'Formulaires & validation' },
+  { slug: 'docker-github-actions-cicd', title: 'Docker + GitHub Actions CI/CD', description: 'Pipelines automatisées pour build, test et déploiement avec Docker et GitHub Actions.', category: 'DevOps' },
+  { slug: 'playwright-testing', title: 'Tests Playwright', description: 'Tests E2E multi-navigateurs avec auto-wait et quality gates intégrés en CI.', category: 'Tests & qualité' },
+  { slug: 'enterprise-portal-architecture', title: 'Architecture de portail enterprise', description: 'Patterns pour la scalabilité, la sécurité, la maintenabilité et la collaboration équipe.', category: 'Architecture' }
+];
+
+const categories = Array.from(new Set(vocabularyTerms.map((t) => t.category)));
+---
+
+<BaseLayout
+  lang={lang}
+  title="Vocabulaire technique | Développement React d'entreprise"
+  description="Glossaire des termes et technologies utilisés pour construire des portails internes et des applications React d'entreprise."
+>
+  <article class="mx-auto max-w-5xl space-y-8">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href={`/${lang}`} class="hover:text-accent">{t('nav.home')}</a> → <span class="text-slate-200">{t('nav.vocabulary')}</span>
+    </nav>
+
+    <header class="space-y-4">
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">{t('vocabulary.technicalVocabulary')}</h1>
+      <p class="text-xl text-slate-200">
+        Glossaire des termes, technologies et patterns que j'utilise pour construire des portails internes et des applications React critiques.
+      </p>
+    </header>
+
+    <div class="rounded-2xl border border-accent/30 bg-accent/10 p-6">
+      <p class="text-lg text-slate-100">
+        Chaque terme renvoie vers une page détaillée décrivant comment je l'ai appliqué dans des portails internes pour O2 Czech Republic, TESCO Stores CZ, MONETA Auto, České dráhy et JABLOTRON GROUP.
+      </p>
+    </div>
+
+    {categories.map((category) => (
+      <section class="space-y-4">
+        <h2 class="text-2xl font-semibold text-white">{category}</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {vocabularyTerms
+            .filter((term) => term.category === category)
+            .map((term) => (
+              <a
+                href={`/${lang}/vocabulary/${term.slug}`}
+                class="block rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-accent/30 hover:bg-white/10"
+              >
+                <h3 class="text-lg font-semibold text-accent">{term.title}</h3>
+                <p class="mt-2 text-sm text-slate-300">{term.description}</p>
+                <span class="mt-3 inline-block text-sm font-semibold text-accent">
+                  En savoir plus →
+                </span>
+              </a>
+            ))}
+        </div>
+      </section>
+    ))}
+
+    <section class="rounded-2xl border border-accent/30 bg-accent/5 p-6 text-center">
+      <h2 class="text-2xl font-semibold text-white">Besoin d'aide sur un sujet ?</h2>
+      <p class="mt-3 text-slate-200">
+        Je peux approfondir ces sujets pour votre projet et préparer une architecture claire et documentée.
+      </p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-4 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink transition hover:bg-accentMuted">
+        Contactez-moi
+      </a>
+    </section>
+  </article>
+</BaseLayout>

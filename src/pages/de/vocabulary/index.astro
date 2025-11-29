@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../../i18n/ui';
+
+const lang = 'de';
+const t = useTranslations(lang);
+
+const vocabularyTerms = [
+  { slug: 'enterprise-react-developer', title: 'Enterprise React Entwickler', description: 'Frontend-Spezialist für große, geschäftskritische React-Anwendungen mit Enterprise-Qualitätsstandards.', category: 'Rollen & Expertise' },
+  { slug: 'internal-portal-development', title: 'Interne Portalentwicklung', description: 'Webanwendungen nur für Mitarbeiter, die Betrieb vereinfachen, Daten zentralisieren und Workflows beschleunigen.', category: 'Dienstleistungen' },
+  { slug: 'material-ui-design-system', title: 'Material UI Design System', description: 'Angepasstes Material Design in MUI, abgestimmt auf Branding und Barrierefreiheit.', category: 'UI & Design' },
+  { slug: 'react-typescript', title: 'React + TypeScript', description: 'Statisch typisierte React-Apps, die Fehler früh abfangen und den Code wartbar halten.', category: 'Technologien' },
+  { slug: 'redux-state-management', title: 'Redux State Management', description: 'Vorhersagbare zentrale State-Verwaltung für komplexe Enterprise-Anwendungen.', category: 'State Management' },
+  { slug: 'zustand-state-management', title: 'Zustand State Management', description: 'Leichte Hooks-Bibliothek mit minimalem Boilerplate, ideal für fokussierten State oder als schlanke Alternative zu Redux.', category: 'State Management' },
+  { slug: 'nextjs-enterprise', title: 'Next.js für Enterprise', description: 'React-Framework mit SSR/SSG und API-Routen für performante, SEO-freundliche Apps.', category: 'Frameworks' },
+  { slug: 'gatsby-graphql', title: 'Gatsby + GraphQL', description: 'Statische Generierung mit GraphQL-Schicht, geeignet für Dokumentation und contentlastige Sites.', category: 'Frameworks' },
+  { slug: 'graphql-integration', title: 'GraphQL Integration', description: 'Flexibler Abfragesprachenstandard, der genau die benötigten Daten zwischen Frontend und API liefert.', category: 'Backend-Integration' },
+  { slug: 'postgresql-react', title: 'PostgreSQL + React', description: 'Anbindung von React-Frontends an relationale Datenbanken via REST oder GraphQL.', category: 'Backend-Integration' },
+  { slug: 'mongodb-react-dashboard', title: 'MongoDB React Dashboard', description: 'Echtzeit-Dashboards auf flexiblem MongoDB-Schema mit React-Oberfläche.', category: 'Backend-Integration' },
+  { slug: 'react-hook-form', title: 'React Hook Form', description: 'Performante Formularbibliothek mit unkontrollierten Komponenten und komplexer Validierung.', category: 'Formulare & Validierung' },
+  { slug: 'formik-multistep-forms', title: 'Formik Mehrschritt-Formulare', description: 'Deklarative Mehrschritt-Wizards mit Yup-Validierung für Enterprise-Anwendungen.', category: 'Formulare & Validierung' },
+  { slug: 'docker-github-actions-cicd', title: 'Docker + GitHub Actions CI/CD', description: 'Automatisierte Pipelines für Build, Test und Deployment mit Docker und GitHub Actions.', category: 'DevOps' },
+  { slug: 'playwright-testing', title: 'Playwright Tests', description: 'End-to-End-Tests über mehrere Browser mit Auto-Wait und Quality Gates in CI.', category: 'Tests & Qualität' },
+  { slug: 'enterprise-portal-architecture', title: 'Enterprise-Portal-Architektur', description: 'Patterns für Skalierbarkeit, Sicherheit, Wartbarkeit und Teamkollaboration in großen React-Projekten.', category: 'Architektur' }
+];
+
+const categories = Array.from(new Set(vocabularyTerms.map((t) => t.category)));
+---
+
+<BaseLayout
+  lang={lang}
+  title="Technisches Vokabular | Enterprise React"
+  description="Glossar der Begriffe und Technologien für Enterprise-React-Portale und interne Anwendungen."
+>
+  <article class="mx-auto max-w-5xl space-y-8">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href={`/${lang}`} class="hover:text-accent">{t('nav.home')}</a> → <span class="text-slate-200">{t('nav.vocabulary')}</span>
+    </nav>
+
+    <header class="space-y-4">
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">{t('vocabulary.technicalVocabulary')}</h1>
+      <p class="text-xl text-slate-200">
+        Sammlung der Technologien, Patterns und Konzepte, die ich in internen Portalen und geschäftskritischen React-Anwendungen einsetze.
+      </p>
+    </header>
+
+    <div class="rounded-2xl border border-accent/30 bg-accent/10 p-6">
+      <p class="text-lg text-slate-100">
+        Jeder Begriff führt zu einer Detailseite mit Beispielen aus Projekten für O2 Czech Republic, TESCO Stores CZ, MONETA Auto, České dráhy und JABLOTRON GROUP.
+      </p>
+    </div>
+
+    {categories.map((category) => (
+      <section class="space-y-4">
+        <h2 class="text-2xl font-semibold text-white">{category}</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {vocabularyTerms
+            .filter((term) => term.category === category)
+            .map((term) => (
+              <a
+                href={`/${lang}/vocabulary/${term.slug}`}
+                class="block rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-accent/30 hover:bg-white/10"
+              >
+                <h3 class="text-lg font-semibold text-accent">{term.title}</h3>
+                <p class="mt-2 text-sm text-slate-300">{term.description}</p>
+                <span class="mt-3 inline-block text-sm font-semibold text-accent">
+                  Mehr erfahren →
+                </span>
+              </a>
+            ))}
+        </div>
+      </section>
+    ))}
+
+    <section class="rounded-2xl border border-accent/30 bg-accent/5 p-6 text-center">
+      <h2 class="text-2xl font-semibold text-white">Brauchen Sie mehr Kontext?</h2>
+      <p class="mt-3 text-slate-200">
+        Ich kann Architektur, POC oder Audits zu jedem dieser Themen für Ihr Projekt vorbereiten.
+      </p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-4 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink transition hover:bg-accentMuted">
+        Kontakt aufnehmen
+      </a>
+    </section>
+  </article>
+</BaseLayout>

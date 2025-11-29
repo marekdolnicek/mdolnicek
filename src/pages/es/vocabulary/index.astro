@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../../i18n/ui';
+
+const lang = 'es';
+const t = useTranslations(lang);
+
+const vocabularyTerms = [
+  { slug: 'enterprise-react-developer', title: 'Desarrollador React enterprise', description: 'Especialista frontend que construye aplicaciones React de gran escala y misión crítica con estándares enterprise.', category: 'Roles y experiencia' },
+  { slug: 'internal-portal-development', title: 'Desarrollo de portales internos', description: 'Aplicaciones web para empleados que agilizan operaciones, centralizan datos y mejoran los flujos de trabajo.', category: 'Servicios' },
+  { slug: 'material-ui-design-system', title: 'Design system con Material UI', description: 'Implementación Material Design en MUI adaptada al branding y con accesibilidad incluida.', category: 'UI y diseño' },
+  { slug: 'react-typescript', title: 'React + TypeScript', description: 'Aplicaciones React con tipado estático para detectar errores temprano y mantener el código limpio.', category: 'Tecnologías' },
+  { slug: 'redux-state-management', title: 'Gestión de estado con Redux', description: 'Biblioteca predecible para centralizar el estado en aplicaciones enterprise complejas.', category: 'Gestión de estado' },
+  { slug: 'zustand-state-management', title: 'Gestión de estado con Zustand', description: 'Biblioteca ligera basada en hooks con mínimo boilerplate, ideal para estado acotado o alternativa ligera a Redux.', category: 'Gestión de estado' },
+  { slug: 'nextjs-enterprise', title: 'Next.js para enterprise', description: 'Framework React con SSR/SSG y rutas API para apps rápidas y SEO-friendly.', category: 'Frameworks' },
+  { slug: 'gatsby-graphql', title: 'Gatsby + GraphQL', description: 'Generación estática con capa GraphQL, ideal para portales de documentación y sitios con mucho contenido.', category: 'Frameworks' },
+  { slug: 'graphql-integration', title: 'Integración GraphQL', description: 'Lenguaje de consultas flexible que entrega exactamente los datos necesarios entre frontend y API.', category: 'Integración backend' },
+  { slug: 'postgresql-react', title: 'PostgreSQL + React', description: 'Conexión de frontends React a bases relacionales vía REST o GraphQL.', category: 'Integración backend' },
+  { slug: 'mongodb-react-dashboard', title: 'Dashboard React + MongoDB', description: 'Dashboards en tiempo real sobre esquema flexible MongoDB con interfaz React.', category: 'Integración backend' },
+  { slug: 'react-hook-form', title: 'React Hook Form', description: 'Biblioteca de formularios performante con componentes no controlados y validaciones complejas.', category: 'Formularios y validación' },
+  { slug: 'formik-multistep-forms', title: 'Formularios multi-paso con Formik', description: 'Creación declarativa de wizards multi-paso con validación Yup en aplicaciones enterprise.', category: 'Formularios y validación' },
+  { slug: 'docker-github-actions-cicd', title: 'Docker + GitHub Actions CI/CD', description: 'Pipelines automatizadas para build, test y despliegue usando Docker y GitHub Actions.', category: 'DevOps' },
+  { slug: 'playwright-testing', title: 'Pruebas con Playwright', description: 'Testing E2E multi-navegador con auto-wait y quality gates en CI.', category: 'Pruebas y calidad' },
+  { slug: 'enterprise-portal-architecture', title: 'Arquitectura de portales enterprise', description: 'Patrones para escalabilidad, seguridad, mantenibilidad y colaboración de equipo en grandes proyectos React.', category: 'Arquitectura' }
+];
+
+const categories = Array.from(new Set(vocabularyTerms.map((t) => t.category)));
+---
+
+<BaseLayout
+  lang={lang}
+  title="Vocabulario técnico | React empresarial"
+  description="Glosario de términos y tecnologías usados para construir portales internos y aplicaciones React empresariales."
+>
+  <article class="mx-auto max-w-5xl space-y-8">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <a href={`/${lang}`} class="hover:text-accent">{t('nav.home')}</a> → <span class="text-slate-200">{t('nav.vocabulary')}</span>
+    </nav>
+
+    <header class="space-y-4">
+      <h1 class="text-4xl font-bold text-white sm:text-5xl">{t('vocabulary.technicalVocabulary')}</h1>
+      <p class="text-xl text-slate-200">
+        Términos, tecnologías y patrones que aplico al construir portales internos y aplicaciones críticas en React.
+      </p>
+    </header>
+
+    <div class="rounded-2xl border border-accent/30 bg-accent/10 p-6">
+      <p class="text-lg text-slate-100">
+        Cada término enlaza a una página con ejemplos reales de proyectos para O2 Czech Republic, TESCO Stores CZ, MONETA Auto, České dráhy y JABLOTRON GROUP.
+      </p>
+    </div>
+
+    {categories.map((category) => (
+      <section class="space-y-4">
+        <h2 class="text-2xl font-semibold text-white">{category}</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {vocabularyTerms
+            .filter((term) => term.category === category)
+            .map((term) => (
+              <a
+                href={`/${lang}/vocabulary/${term.slug}`}
+                class="block rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-accent/30 hover:bg-white/10"
+              >
+                <h3 class="text-lg font-semibold text-accent">{term.title}</h3>
+                <p class="mt-2 text-sm text-slate-300">{term.description}</p>
+                <span class="mt-3 inline-block text-sm font-semibold text-accent">
+                  Ver detalle →
+                </span>
+              </a>
+            ))}
+        </div>
+      </section>
+    ))}
+
+    <section class="rounded-2xl border border-accent/30 bg-accent/5 p-6 text-center">
+      <h2 class="text-2xl font-semibold text-white">¿Necesitas ayuda en alguno?</h2>
+      <p class="mt-3 text-slate-200">
+        Puedo preparar arquitectura, un POC o auditoría sobre cualquier tema de este vocabulario para tu proyecto.
+      </p>
+      <a href="mailto:marekdolnicek@gmail.com" class="mt-4 inline-block rounded-full bg-accent px-8 py-3 font-semibold text-ink transition hover:bg-accentMuted">
+        Contáctame
+      </a>
+    </section>
+  </article>
+</BaseLayout>

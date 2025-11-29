@@ -23,6 +23,29 @@ const techSlugMap: Record<string, string> = {
   'GraphQL': 'graphql-integration',
   'Gatsby': 'gatsby-graphql'
 };
+
+const projectTranslations: Record<string, { title?: string; summary?: string; role?: string }> = {
+  '00-o2-service-workbench': {
+    role: 'Sviluppatore frontend @ NEOVIA',
+    title: 'O2 Czech Republic Service Workbench',
+    summary: 'Portale React/TypeScript di NEOVIA che aiuta i team O2 a pianificare il lavoro interno, gestire ticket e coordinare le operazioni in un workspace Material UI.'
+  },
+  '01-flowops-control': {
+    role: 'Sviluppatore frontend @ CONSWARE',
+    title: 'TESCO Stores CZ Operations Portal',
+    summary: 'Applicazione interna per i manager di negozio per pianificare campagne, controllare stock e sincronizzare report tra gli ipermercati cechi.'
+  },
+  '02-aurora-prototyper': {
+    role: 'Sviluppatore frontend @ BOOTIQ',
+    title: 'MONETA Auto Underwriting Workspace',
+    summary: 'Suite Next.js che supporta i consulenti di prestito con validazioni, tracciamento documenti e integrazioni verso API interne.'
+  },
+  '03-signal-a11y': {
+    role: 'Sviluppatore frontend @ SYNETECH',
+    title: 'JABLOTRON Service Dashboard',
+    summary: 'Tooling React + Gatsby che permette agli installatori di gestire dispositivi, calendari e ticket di servizio in un’unica interfaccia.'
+  }
+};
 ---
 
 <style>
@@ -67,9 +90,9 @@ const techSlugMap: Record<string, string> = {
       {projects.map((project) => (
         <article class="grid-panel flex flex-col gap-4">
           <div>
-            <p class="text-sm uppercase tracking-[0.25em] text-slate-400">{project.data.role}</p>
-            <h3 class="mt-2 text-2xl font-semibold text-white">{project.data.title}</h3>
-            <p class="mt-2 text-slate-200">{project.data.summary}</p>
+            <p class="text-sm uppercase tracking-[0.25em] text-slate-400">{projectTranslations[project.slug]?.role ?? project.data.role}</p>
+            <h3 class="mt-2 text-2xl font-semibold text-white">{projectTranslations[project.slug]?.title ?? project.data.title}</h3>
+            <p class="mt-2 text-slate-200">{projectTranslations[project.slug]?.summary ?? project.data.summary}</p>
           </div>
           <div class="flex flex-wrap gap-2">
             {project.data.stack.map((tech) => {

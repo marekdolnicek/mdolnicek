@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
+import { defaultLang, languages, useTranslations } from '../../i18n/ui';
 
 interface FormState {
   company: string;
@@ -13,32 +14,51 @@ const initialState: FormState = {
   timeline: ''
 };
 
-export default function OpportunityForm() {
-  const [state, setState] = useState<FormState>(initialState);
-  const [submitted, setSubmitted] = useState(false);
+type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+interface OpportunityFormProps {
+  lang?: keyof typeof languages;
+}
+
+export default function OpportunityForm({ lang = defaultLang }: OpportunityFormProps) {
+  const [state, setState] = useState<FormState>(initialState);
+  const [status, setStatus] = useState<FormStatus>('idle');
+  const t = useTranslations(lang);
+
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+
+    setStatus('loading');
+    try {
+      const response = await fetch('/api/brief', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(state)
+      });
+
+      if (!response.ok) throw new Error('Failed to send brief');
+
+      setStatus('success');
+    } catch {
+      setStatus('error');
+    }
   };
 
-  if (submitted) {
+  if (status === 'success') {
     return (
       <div className="surface-card text-center">
-        <p className="eyebrow text-accent">Message queued</p>
-        <h3 className="mt-2 text-2xl font-semibold text-white">Thanks for reaching out.</h3>
-        <p className="mt-3 text-slate-200">
-          I’ll respond within one business day with availability and next steps.
-        </p>
+        <p className="eyebrow text-accent">{t('form.successEyebrow')}</p>
+        <h3 className="mt-2 text-2xl font-semibold text-white">{t('form.successTitle')}</h3>
+        <p className="mt-3 text-slate-200">{t('form.successBody')}</p>
         <button
           type="button"
           className="mt-4 rounded-full bg-accent px-4 py-2 font-semibold text-ink"
           onClick={() => {
-            setSubmitted(false);
+            setStatus('idle');
             setState(initialState);
           }}
         >
-          Send another brief
+          {t('form.successCta')}
         </button>
       </div>
     );
@@ -48,7 +68,7 @@ export default function OpportunityForm() {
     <form className="surface-card space-y-4" onSubmit={onSubmit}>
       <div>
         <label htmlFor="company" className="text-sm font-medium text-slate-200">
-          Company or project name
+          {t('form.companyLabel')}
         </label>
         <input
           id="company"
@@ -57,12 +77,12 @@ export default function OpportunityForm() {
           onChange={(event) => setState((prev) => ({ ...prev, company: event.target.value }))}
           required
           className="mt-1 w-full rounded-2xl border border-white/15 bg-slate-950/40 px-4 py-3 text-white placeholder:text-slate-500 focus:border-accent"
-          placeholder="Acme Labs"
+          placeholder={t('form.companyPlaceholder')}
         />
       </div>
       <div>
         <label htmlFor="scope" className="text-sm font-medium text-slate-200">
-          What should React handle?
+          {t('form.scopeLabel')}
         </label>
         <textarea
           id="scope"
@@ -71,12 +91,12 @@ export default function OpportunityForm() {
           onChange={(event) => setState((prev) => ({ ...prev, scope: event.target.value }))}
           required
           className="mt-1 min-h-[90px] w-full rounded-2xl border border-white/15 bg-slate-950/40 px-4 py-3 text-white placeholder:text-slate-500 focus:border-accent"
-          placeholder="Dashboard, AI-assisted form builder, design system cleanup..."
+          placeholder={t('form.scopePlaceholder')}
         />
       </div>
       <div>
         <label htmlFor="timeline" className="text-sm font-medium text-slate-200">
-          Timeline
+          {t('form.timelineLabel')}
         </label>
         <select
           id="timeline"
@@ -87,18 +107,22 @@ export default function OpportunityForm() {
           className="mt-1 w-full rounded-2xl border border-white/15 bg-slate-950/40 px-4 py-3 text-white focus:border-accent"
         >
           <option value="" disabled>
-            Select one
+            {t('form.timelineDefault')}
           </option>
-          <option value="rush">1-2 weeks (rapid spike)</option>
-          <option value="month">3-5 weeks</option>
-          <option value="quarter">6+ weeks retainer</option>
+          <option value="rush">{t('form.timeline.rush')}</option>
+          <option value="month">{t('form.timeline.month')}</option>
+          <option value="quarter">{t('form.timeline.quarter')}</option>
         </select>
       </div>
+      {status === 'error' && (
+        <p className="text-sm text-red-300">{t('form.error')}</p>
+      )}
       <button
         type="submit"
-        className="w-full rounded-full bg-accent px-4 py-3 text-lg font-semibold text-ink transition hover:bg-accentMuted"
+        className="w-full rounded-full bg-accent px-4 py-3 text-lg font-semibold text-ink transition hover:bg-accentMuted disabled:cursor-not-allowed disabled:opacity-60"
+        disabled={status === 'loading'}
       >
-        Share project brief
+        {status === 'loading' ? t('form.submitting') : t('form.submit')}
       </button>
     </form>
   );

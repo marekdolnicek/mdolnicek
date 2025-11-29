@@ -6,33 +6,17 @@ import LanguageSwitcher from '../../components/LanguageSwitcher.astro';
 import ProjectTimeline from '../../components/react/ProjectTimeline.tsx';
 import AIPlayground from '../../components/react/AIPlayground.tsx';
 import OpportunityForm from '../../components/react/OpportunityForm.tsx';
-import {
-  skillClusters,
-  timelineEntries,
-  aiIdeas,
-  contactLinks
-} from '../../data/profile';
 import { Image } from 'astro:assets';
 import portrait from '../../assets/profilovka_md.png';
 import { getCollection } from 'astro:content';
+import { getTranslatedContent, useTranslations } from '../../i18n/ui';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 
-// Czech content
-const hero = {
-  eyebrow: 'Sviluppatore Frontend • React & TypeScript',
-  title: 'Marek Dolníček',
-  subtitle: 'Sviluppatore React enterprise con sede a Praga.',
-  body: "Nell'ultimo decennio ho consegnato portali interni per O2 Czech Republic, TESCO Stores CZ, MONETA Auto, České dráhy, JABLOTRON GROUP e altri marchi cechi. Padroneggio il frontend in React e TypeScript, lo collego ad API Java o PHP e mantengo Material UI e sistemi di design personalizzati snelli ed efficienti, mentre imparo costantemente - dall'orchestrazione di agenti AI alla sperimentazione con pratiche DevOps.",
-  primaryCta: { label: 'Email marekdolnicek@gmail.com', href: 'mailto:marekdolnicek@gmail.com' },
-  secondaryCta: { label: 'Visualizza esperienza', href: '#timeline' }
-};
-
-const highlightStats = [
-  { label: 'Anni nel frontend', value: '8+' },
-  { label: 'Portali enterprise consegnati', value: '7' },
-  { label: 'Freelance dal', value: '2012' }
-];
+// Get Italian translations
+const lang = 'it';
+const { hero, highlightStats, skillClusters, timelineEntries, aiIdeas, contactLinks } = getTranslatedContent(lang);
+const t = useTranslations(lang);
 
 // Map technology names to vocabulary page slugs
 const techSlugMap: Record<string, string> = {
@@ -67,10 +51,11 @@ const techSlugMap: Record<string, string> = {
 </style>
 
 <BaseLayout
+  lang={lang}
   title="Marek Dolníček — Sviluppatore React & TypeScript"
   description="Sviluppatore React enterprise che costruisce portali interni scalabili e applicazioni mission-critical con TypeScript, Material UI e tecnologie web moderne."
 >
-  <Navigation slot="navigation" client:load currentPath={Astro.url.pathname} />
+  <Navigation slot="navigation" client:load currentPath={Astro.url.pathname} lang={lang} />
   <LanguageSwitcher slot="language-switcher" />
 
   <section class="rounded-[32px] border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-8 shadow-card">
@@ -117,12 +102,15 @@ const techSlugMap: Record<string, string> = {
   <section class="grid gap-6 lg:grid-cols-[2fr_1fr]">
     <div class="surface-card space-y-6">
       <div>
-        <p class="eyebrow">Consegna React enterprise</p>
-        <h2 class="text-3xl font-semibold text-white">Sistemi utilizzati quotidianamente dai team cechi</h2>
+        <p class="eyebrow">{t('section.enterpriseReact')}</p>
+        <h2 class="text-3xl font-semibold text-white">{t('section.systemsUsedDaily')}</h2>
       </div>
-      <p class="text-lg text-slate-200">
-        Consegno applicazioni mantenibili in <a href="/it/vocabulary/react-typescript" class="keyword-highlight">React e TypeScript</a> per banche, operatori ferroviari e rivenditori. I dati fluiscono da API Java, PHP o <a href="/it/vocabulary/graphql-integration" class="keyword-highlight">GraphQL</a> verso sistemi accessibili di <a href="/it/vocabulary/material-ui-design-system" class="keyword-highlight">Material UI</a> e CSS che mantengono produttivi i team dei negozi, mentre esperimenti continui con agenti AI e routine di <a href="/it/vocabulary/docker-github-actions-cicd" class="keyword-highlight">CI/CD</a> migliorano la consegna ad ogni sprint.
-      </p>
+      <p class="text-lg text-slate-200" set:html={t('section.enterpriseDescription')
+        .replace(/React e TypeScript/g, '<a href="/it/vocabulary/react-typescript" class="keyword-highlight">React e TypeScript</a>')
+        .replace(/GraphQL/g, '<a href="/it/vocabulary/graphql-integration" class="keyword-highlight">GraphQL</a>')
+        .replace(/Material UI/g, '<a href="/it/vocabulary/material-ui-design-system" class="keyword-highlight">Material UI</a>')
+        .replace(/CI\/CD/g, '<a href="/it/vocabulary/docker-github-actions-cicd" class="keyword-highlight">CI/CD</a>')
+      }></p>
       <ul class="grid gap-4 sm:grid-cols-3">
         {skillClusters.map((cluster) => (
           <li class="rounded-3xl border border-white/10 bg-white/5 p-4">
@@ -149,8 +137,8 @@ const techSlugMap: Record<string, string> = {
 
   <section id="projects" class="space-y-6">
     <div class="space-y-4">
-      <p class="eyebrow">Progetti selezionati</p>
-      <h2 class="text-3xl font-semibold text-white">Applicazioni React enterprise costruite con precisione</h2>
+      <p class="eyebrow">{t('section.selectedProjects')}</p>
+      <h2 class="text-3xl font-semibold text-white">{t('section.reactHeavySurfaces')}</h2>
     </div>
     <div class="grid gap-6 md:grid-cols-2">
       {projects.map((project) => (
@@ -182,19 +170,19 @@ const techSlugMap: Record<string, string> = {
 
   <section id="timeline" class="space-y-4">
     <div class="space-y-4">
-      <p class="eyebrow">Cronologia</p>
-      <h2 class="text-3xl font-semibold text-white">Traguardi di carriera e clienti chiave</h2>
+      <p class="eyebrow">{t('section.timeline')}</p>
+      <h2 class="text-3xl font-semibold text-white">{t('section.careerMilestones')}</h2>
     </div>
     <ProjectTimeline client:visible entries={timelineEntries} />
   </section>
 
   <section class="grid gap-6 lg:grid-cols-2">
-    <OpportunityForm client:visible />
+    <OpportunityForm client:visible lang={lang} />
     <div class="surface-card space-y-4">
-      <p class="eyebrow text-accent">Kontakt</p>
-      <h2 class="text-3xl font-semibold text-white">Lavoriamo insieme al tuo progetto React</h2>
+      <p class="eyebrow text-accent">{t('contact.email')}</p>
+      <h2 class="text-3xl font-semibold text-white">{t('contact.letsPair')}</h2>
       <p class="text-slate-200">
-        Consulenze asincrone, pair programming dal vivo o consulenza integrata. Mi integro rapidamente, lascio documentazione e mantengo budget di performance misurabili.
+        {t('contact.description')}
       </p>
       <ul class="space-y-2 text-sm text-slate-200">
         {contactLinks.map((link) => (

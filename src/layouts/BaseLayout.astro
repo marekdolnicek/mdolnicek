@@ -1,16 +1,27 @@
 ---
 import '../styles/global.css';
+import { languages } from '../i18n/ui';
 
 interface Props {
   title?: string;
   description?: string;
   coverImage?: string;
+  lang?: string;
 }
 
-const { title = 'Marek Dolníček — React & TypeScript Developer', description = 'Enterprise React developer building scalable internal portals and mission-critical applications with TypeScript, Material UI, and modern web technologies.', coverImage = '/social.png' } = Astro.props as Props;
+const {
+  title = 'Marek Dolníček — React & TypeScript Developer',
+  description = 'Enterprise React developer building scalable internal portals and mission-critical applications with TypeScript, Material UI, and modern web technologies.',
+  coverImage = '/social.png',
+  lang: explicitLang
+} = Astro.props as Props;
+
+// Derive the language from props or URL so localized pages get the correct html lang
+const urlLang = Astro.url.pathname.split('/')[1];
+const lang = explicitLang || (urlLang && urlLang in languages ? urlLang : 'en');
 ---
 
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />

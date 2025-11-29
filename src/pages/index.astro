@@ -6,19 +6,17 @@ import LanguageSwitcher from '../components/LanguageSwitcher.astro';
 import ProjectTimeline from '../components/react/ProjectTimeline.tsx';
 import AIPlayground from '../components/react/AIPlayground.tsx';
 import OpportunityForm from '../components/react/OpportunityForm.tsx';
-import {
-  hero,
-  highlightStats,
-  skillClusters,
-  timelineEntries,
-  aiIdeas,
-  contactLinks
-} from '../data/profile';
 import { Image } from 'astro:assets';
 import portrait from '../assets/profilovka_md.png';
 import { getCollection } from 'astro:content';
+import { getTranslatedContent, useTranslations } from '../i18n/ui';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+
+// Get English translations
+const lang = 'en';
+const { hero, highlightStats, skillClusters, timelineEntries, aiIdeas, contactLinks } = getTranslatedContent(lang);
+const t = useTranslations(lang);
 
 // Map technology names to vocabulary page slugs
 const techSlugMap: Record<string, string> = {
@@ -52,8 +50,8 @@ const techSlugMap: Record<string, string> = {
   }
 </style>
 
-<BaseLayout>
-  <Navigation slot="navigation" client:load currentPath={Astro.url.pathname} />
+<BaseLayout lang={lang}>
+  <Navigation slot="navigation" client:load currentPath={Astro.url.pathname} lang={lang} />
   <LanguageSwitcher slot="language-switcher" />
 
   <section class="rounded-[32px] border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-8 shadow-card">
@@ -100,12 +98,15 @@ const techSlugMap: Record<string, string> = {
   <section class="grid gap-6 lg:grid-cols-[2fr_1fr]">
     <div class="surface-card space-y-6">
       <div>
-        <p class="eyebrow">Enterprise React delivery</p>
-        <h2 class="text-3xl font-semibold text-white">Systems used daily by Czech teams</h2>
+        <p class="eyebrow">{t('section.enterpriseReact')}</p>
+        <h2 class="text-3xl font-semibold text-white">{t('section.systemsUsedDaily')}</h2>
       </div>
-      <p class="text-lg text-slate-200">
-        I ship maintainable <a href="/vocabulary/react-typescript" class="keyword-highlight">React and TypeScript</a> apps for banks, rail operators, and retailers. Data flows from Java, PHP, or <a href="/vocabulary/graphql-integration" class="keyword-highlight">GraphQL</a> APIs into accessible <a href="/vocabulary/material-ui-design-system" class="keyword-highlight">Material UI</a> and CSS systems that keep store teams productive, while ongoing experiments with AI agents and <a href="/vocabulary/docker-github-actions-cicd" class="keyword-highlight">CI/CD</a> routines keep delivery improving every sprint.
-      </p>
+      <p class="text-lg text-slate-200" set:html={t('section.enterpriseDescription')
+        .replace(/React and TypeScript/g, '<a href="/vocabulary/react-typescript" class="keyword-highlight">React and TypeScript</a>')
+        .replace(/GraphQL/g, '<a href="/vocabulary/graphql-integration" class="keyword-highlight">GraphQL</a>')
+        .replace(/Material UI/g, '<a href="/vocabulary/material-ui-design-system" class="keyword-highlight">Material UI</a>')
+        .replace(/CI\/CD/g, '<a href="/vocabulary/docker-github-actions-cicd" class="keyword-highlight">CI/CD</a>')
+      }></p>
       <ul class="grid gap-4 sm:grid-cols-3">
         {skillClusters.map((cluster) => (
           <li class="rounded-3xl border border-white/10 bg-white/5 p-4">
@@ -132,8 +133,8 @@ const techSlugMap: Record<string, string> = {
 
   <section id="projects" class="space-y-6">
     <div class="space-y-4">
-      <p class="eyebrow">Selected projects</p>
-      <h2 class="text-3xl font-semibold text-white">Enterprise React applications built with precision</h2>
+      <p class="eyebrow">{t('section.selectedProjects')}</p>
+      <h2 class="text-3xl font-semibold text-white">{t('section.reactHeavySurfaces')}</h2>
     </div>
     <div class="grid gap-6 md:grid-cols-2">
       {projects.map((project) => (
@@ -170,19 +171,19 @@ const techSlugMap: Record<string, string> = {
 
   <section id="timeline" class="space-y-4">
     <div class="space-y-4 my-4">
-      <p class="eyebrow">Timeline</p>
-      <h2 class="text-3xl font-semibold text-white">Career milestones & key clients</h2>
+      <p class="eyebrow">{t('section.timeline')}</p>
+      <h2 class="text-3xl font-semibold text-white">{t('section.careerMilestones')}</h2>
     </div>
     <ProjectTimeline client:visible entries={timelineEntries} />
   </section>
 
   <section class="grid gap-6 lg:grid-cols-2">
-    <OpportunityForm client:visible />
+    <OpportunityForm client:visible lang={lang} />
     <div class="surface-card space-y-4">
-      <p class="eyebrow text-accent">Signals</p>
-      <h2 class="text-3xl font-semibold text-white">Let’s pair on your React surface</h2>
+      <p class="eyebrow text-accent">{t('contact.email')}</p>
+      <h2 class="text-3xl font-semibold text-white">{t('contact.letsPair')}</h2>
       <p class="text-slate-200">
-        Async briefs, live pairing, or embedded consulting. I plug in quickly, leave documentation behind, and keep performance budgets measurable.
+        {t('contact.description')}
       </p>
       <ul class="space-y-2 text-sm text-slate-200">
         {contactLinks.map((link) => (
