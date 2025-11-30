@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import type { FormEvent } from 'react';
+import { useEffect, useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import { defaultLang, languages, useTranslations } from '../../i18n/ui';
 
 interface FormState {
@@ -20,21 +20,22 @@ interface OpportunityFormProps {
   lang?: keyof typeof languages;
 }
 
+const FORM_ID = 'mqaravrg';
+
 export default function OpportunityForm({ lang = defaultLang }: OpportunityFormProps) {
   const [state, setState] = useState<FormState>(initialState);
-  const [status, setStatus] = useState<FormStatus>('idle');
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [formState, handleSubmit] = useForm(FORM_ID);
   const t = useTranslations(lang);
 
-  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  useEffect(() => {
+    if (formState.succeeded) {
+      setShowSuccess(true);
+      setState(initialState);
+    }
+  }, [formState.succeeded]);
 
-    // Mock the async request so the form still works on static hosts.
-    setStatus('loading');
-    await new Promise((resolve) => setTimeout(resolve, 400));
-    setStatus('success');
-  };
-
-  if (status === 'success') {
+  if (showSuccess) {
     return (
       <div className="surface-card text-center">
         <p className="eyebrow text-accent">{t('form.successEyebrow')}</p>
@@ -44,8 +45,8 @@ export default function OpportunityForm({ lang = defaultLang }: OpportunityFormP
           type="button"
           className="mt-4 rounded-full bg-accent px-4 py-2 font-semibold text-ink"
           onClick={() => {
-            setStatus('idle');
             setState(initialState);
+            setShowSuccess(false);
           }}
         >
           {t('form.successCta')}
@@ -55,7 +56,7 @@ export default function OpportunityForm({ lang = defaultLang }: OpportunityFormP
   }
 
   return (
-    <form className="surface-card space-y-4" onSubmit={onSubmit}>
+    <form className="surface-card space-y-4" onSubmit={handleSubmit}>
       <div>
         <label htmlFor="company" className="text-sm font-medium text-slate-200">
           {t('form.companyLabel')}
@@ -69,6 +70,7 @@ export default function OpportunityForm({ lang = defaultLang }: OpportunityFormP
           className="mt-1 w-full rounded-2xl border border-white/15 bg-slate-950/40 px-4 py-3 text-white placeholder:text-slate-500 focus:border-accent"
           placeholder={t('form.companyPlaceholder')}
         />
+        <ValidationError prefix="Company" field="company" errors={formState.errors} />
       </div>
       <div>
         <label htmlFor="scope" className="text-sm font-medium text-slate-200">
@@ -83,6 +85,7 @@ export default function OpportunityForm({ lang = defaultLang }: OpportunityFormP
           className="mt-1 min-h-[90px] w-full rounded-2xl border border-white/15 bg-slate-950/40 px-4 py-3 text-white placeholder:text-slate-500 focus:border-accent"
           placeholder={t('form.scopePlaceholder')}
         />
+        <ValidationError prefix="Scope" field="scope" errors={formState.errors} />
       </div>
       <div>
         <label htmlFor="timeline" className="text-sm font-medium text-slate-200">
@@ -104,15 +107,15 @@ export default function OpportunityForm({ lang = defaultLang }: OpportunityFormP
           <option value="quarter">{t('form.timeline.quarter')}</option>
         </select>
       </div>
-      {status === 'error' && (
+      {formState.errors && formState.errors.length > 0 && (
         <p className="text-sm text-red-300">{t('form.error')}</p>
       )}
       <button
         type="submit"
         className="w-full rounded-full bg-accent px-4 py-3 text-lg font-semibold text-ink transition hover:bg-accentMuted disabled:cursor-not-allowed disabled:opacity-60"
-        disabled={status === 'loading'}
+        disabled={formState.submitting}
       >
-        {status === 'loading' ? t('form.submitting') : t('form.submit')}
+        {formState.submitting ? t('form.submitting') : t('form.submit')}
       </button>
     </form>
   );
