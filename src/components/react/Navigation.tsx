@@ -21,7 +21,7 @@ export default function Navigation({ currentPath = '/', lang }: NavigationProps)
     { label: t('nav.vocabulary'), href: `${langPrefix}/vocabulary` }
   ];
 
-  const extraItems = [{ label: t('nav.downloadCv'), href: '/marek_dolnicek_cv-cs.pdf' }];
+  const extraItems = [{ label: t('nav.downloadCv'), href: '/CV_cs-2026.pdf' }];
 
   return (
     <>
