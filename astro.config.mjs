@@ -10,6 +10,9 @@ export default defineConfig({
   site: 'https://mdolnicek.eu',
   srcDir: './src',
   output: 'server',
+  adapter: node({
+    mode: 'standalone'
+  }),
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'cs', 'de', 'es', 'it', 'fr'],
